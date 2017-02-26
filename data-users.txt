@@ -1,0 +1,68 @@
+[
+    {
+        "sUniqueId": 100030,
+        "sUsername": "copoiul",
+        "sPassword": "carnace",
+        "sAccesRights": 3
+    },
+    {
+        "sUniqueId": 100031,
+        "sUsername": "bogdan .bele@x",
+        "sPassword": "qweqwex",
+        "sAccesRights": 1
+    },
+    {
+        "sUniqueId": 100032,
+        "sUsername": "bogdan .bele@yahoo.com",
+        "sPassword": "qweqwex",
+        "sAccesRights": 1
+    },
+    {
+        "sUniqueId": 100033,
+        "sUsername": "bogdan .bele@yahoo.comx",
+        "sPassword": "qweqwe",
+        "sAccesRights": 1
+    },
+    {
+        "sUniqueId": 100034,
+        "sUsername": "mazilu23xx",
+        "sPassword": "qweqwe",
+        "sAccesRights": 1
+    },
+    {
+        "sUniqueId": 100035,
+        "sUsername": "george vinca",
+        "sPassword": "mazipedia",
+        "sAccesRights": 1
+    },
+    {
+        "sUniqueId": 100036,
+        "sUsername": "georgsse xx",
+        "sPassword": "mazipedia",
+        "sAccesRights": 1
+    },
+    {
+        "sUniqueId": 100037,
+        "sUsername": "",
+        "sPassword": "",
+        "sAccesRights": 1
+    },
+    {
+        "sUniqueId": 100038,
+        "sUsername": "",
+        "sPassword": "",
+        "sAccesRights": 1
+    },
+    {
+        "sUniqueId": 100039,
+        "sUsername": "lisabelinda",
+        "sPassword": "beleboby",
+        "sAccesRights": 1
+    },
+    {
+        "sUniqueId": 100040,
+        "sUsername": "lisabelinda",
+        "sPassword": "beleboby",
+        "sAccesRights": 1
+    }
+]

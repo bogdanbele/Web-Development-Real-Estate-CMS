@@ -1,0 +1,102 @@
+#wdw-property-menu{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: #9C27B0;
+	color: white;
+}
+
+#wdw-property-menu div{
+	cursor: pointer;
+}
+
+#wdw-property-menu div:not(:first-child){
+	margin-top: 100px;
+}
+
+
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
+#wdw-properties{
+	/*display: flex;*/
+	align-items: center;
+	flex-direction: column;
+	background-color: #ECEFF1;
+
+}
+
+
+
+
+#wdw-properties .lbl-property .lbl-property-address{
+	width: 300px;
+}
+
+.lbl-property-id {
+	display:none;
+}
+
+#wdw-properties > div:nth-child(2){
+	margin-top: 48px;
+}
+
+
+
+/*#wdw-properties */
+.lbl-property.card:first-child{
+display: none;
+}
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
+#wdw-edit-property{
+	/*display: flex;*/
+	flex-direction: column;
+	background-color: #E91E63;
+}
+
+#wdw-edit-property .lbl-property{
+	display: flex;
+
+	justify-content: space-around;
+	margin-top: 20px;
+}
+
+.lbl-property-address{
+	width: 400px;
+	text-align: center;
+}
+
+.lbl-property-price{
+	width: 300px;
+	text-align: center;	
+}
+
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
+
+#wdw-create-property{
+	/*display: flex;*/
+	background-color: #ECEFF1;;
+	display: flex;
+	flex-direction: column;
+}
+
+
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
+
+
+
+.mainAccentColor{
+
+}
+
+.headerText {
+	font-size: 32px;
+	font-weight: 100;
+}

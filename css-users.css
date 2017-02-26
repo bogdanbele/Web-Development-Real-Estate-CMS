@@ -1,0 +1,55 @@
+
+
+
+#wdw-users{
+	align-items: center;
+	flex-direction: column;
+	background-color: #ECEFF1;
+}
+
+
+#wdw-users .lbl-user .lbl-user-username{
+	width: 300px;
+}
+
+.lbl-user-id {
+	display:none;
+}
+
+#wdw-sign-up{
+	background-color: #ECEFF1;
+	display: flex;
+	flex-direction: column;
+	z-index: 5;
+
+}
+
+#wdw-login{
+	background-color: #ECEFF1;
+	display: flex;
+	flex-direction: column;
+	z-index: 5;
+}
+
+
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
+
+
+
+.userBodyWindow{
+	 
+	display: flex; 
+	align-items: center;
+	flex-direction: column;
+	background-color: #ECEFF1;
+}
+
+#userBody{
+	margin-top: 48px;
+}
+
+input#txt-create-user-username {
+
+}

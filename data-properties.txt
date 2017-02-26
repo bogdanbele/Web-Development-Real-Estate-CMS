@@ -1,0 +1,32 @@
+[
+    {
+        "sUniqueId": 100000,
+        "sAddress": "Rebaek Sopark",
+        "iPrice": "222"
+    },
+    {
+        "sUniqueId": 100006,
+        "sAddress": "Bele",
+        "iPrice": "Cladiud"
+    },
+    {
+        "sUniqueId": 100009,
+        "sAddress": "Claudiu",
+        "iPrice": "Bele"
+    },
+    {
+        "sUniqueId": 100006,
+        "sAddress": "Claudiu",
+        "iPrice": "test"
+    },
+    {
+        "sUniqueId": 100007,
+        "sAddress": "Claudiu",
+        "iPrice": "test"
+    },
+    {
+        "sUniqueId": 100008,
+        "sAddress": "Helsiborg Street 5",
+        "iPrice": "1500000"
+    }
+]

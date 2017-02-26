@@ -1,0 +1,212 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-size: 16px;
+	font-family: 'Roboto', sans-serif;
+	/*display: none;*/
+}
+
+
+body{
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.materialBoxShadow {
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.materialButton {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position: relative;
+	height: 5vh;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.09);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+	background-color: #EEEEEE;
+	bottom:0;
+	width: 70vw;
+	left: 0;
+    margin-top: 2vh;
+}
+
+.materialButton:hover{
+		box-shadow: 0 3px 4px rgba(0,0,0,0.15), 0 5px 5px rgba(0,0,0,0.12);
+	background-color: #F5F5F5;
+	bottom: 1px;
+	left: 1px;
+	overflow: hidden;
+}
+.wdw{
+	width: 100vw;
+	height: 100vh;
+	display: none;
+}
+
+input{
+
+}
+
+.card {
+	    height: 50vh;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    padding: 3vh;
+    /* padding-top: 9vh; */
+    background-color: white;
+    margin-top: 10vh;
+}
+
+.container {
+	display: inline-block;
+	cursor: pointer;
+	position: fixed;
+}
+
+.bar1, .bar2, .bar3 {
+	width: 35px;
+	height: 5px;
+	background-color: #333;
+	margin: 6px 0;
+	transition: 0.4s;
+}
+
+.change .bar1 {
+	-webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+	transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+	-webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+	transform: rotate(45deg) translate(-8px, -8px) ;
+}
+
+#menu-bars{
+	position: absolute;
+	top: 10px;
+	left: 20px;
+	z-index: 100;
+}
+#menu-bars .menu-bar{
+	width: 25px;
+	height: 4px;
+	z-index: 98;
+	background-color: #212121;
+	/*background-color: black;*/
+}
+#menu-bars .menu-bar:not(:first-child){
+	margin-top: 3px;
+}		
+#menu{
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	top: 0px;
+	left: -250px;
+	width: 250px;
+	height: 100vh;
+	background-color: #00B0FF;
+	color: white;
+	z-index: 99;
+}
+
+#upperMenu{
+	height: 50vh;
+	width: inherit;
+	align-items: center;
+	flex-direction: column;
+	display: flex;
+	justify-content: center;
+}
+
+#menu .menuHolder:not(:first-child){
+
+}
+
+.menuHolder {
+	width: inherit;
+	display: flex;
+	position: relative;
+	flex-direction: row;
+	height: 6vh;
+	transition: all 1s ease;
+}
+
+.menuHolder p{
+	align-items: center;
+	display: flex;
+}
+
+.menuHolder:hover{
+	transition: all 1s ease;
+	background: #81D4FA;
+
+}
+
+#upperMenu .link {
+	
+	
+}
+
+.fa-marginMenu {
+	margin-left: 2vh;
+	margin-right: 2vh;
+	display: flex !important;
+	/*we're using !important because font awesome has a default
+	value of inline-block, which prevents flex properties.
+	*/
+	align-items: center;
+	justify-content: center;
+
+}
+
+#lowerMenu{
+	height:50vh;
+	width: inherit;
+	align-items: center;
+	flex-direction: column;
+	display: flex;
+	justify-content: center;
+
+}
+#content-cover{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.3);
+	z-index: 98;
+	display: none;
+}
+
+.fa-icon-center {
+	display: flex !important;
+	align-items: center;
+
+}
+
+.propertiesHeader{
+	align-items: center;
+	font-family: 'Roboto', sans-serif;
+	justify-content: center;;
+	color: white;
+	display: flex;
+	z-index: 5;
+	height: 15vh;
+	background-color: #E91E63;
+	width: 100vw;
+	box-shadow: 0 3px 4px rgba(0,0,0,0.15), 0 6px 6px rgba(0,0,0,0.12);
+}
+
+.propertiesBody{
+	display: flex; 
+    align-items: center;
+    flex-direction: column;
+    background-color: #ECEFF1;
+}
+
