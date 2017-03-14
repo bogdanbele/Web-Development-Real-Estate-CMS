@@ -1,8 +1,12 @@
 <?php
 	// UPDATE PROPERTY
-$sId = $_GET['id'];
-$sAddress = $_GET['address'];
-$iPrice = $_GET['price'];
+$sId = $_POST['id'];
+$sAddress = $_POST['address'];
+$iPrice = $_POST['price'];
+
+
+// I need to get the old file data and verify if the are the same, if not, delete the previos images
+// I should use a for that check if for example sImages at position 0 is the same with the one at position 3 after update, if not, delete previous 
 
 $sFileName = "data-properties.txt";
 

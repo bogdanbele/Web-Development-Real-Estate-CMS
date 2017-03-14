@@ -18,7 +18,7 @@
 
 #wdw-sign-up{
 	background-color: #ECEFF1;
-	display: flex;
+	display: none;
 	flex-direction: column;
 	z-index: 5;
 
@@ -48,8 +48,30 @@
 
 #userBody{
 	margin-top: 48px;
+	    height: 80vh;
 }
 
 input#txt-create-user-username {
 
+}
+
+.admin-user {
+	background-color: #FFFF8D;
+}
+
+.admin-user:hover {
+	background-color: #FFF9C4;
+}
+
+.lbl-user-username {
+	width: 300px;
+	    display: flex;
+    justify-content: center;
+}
+
+.lbl-user-password {
+	width: 200px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }

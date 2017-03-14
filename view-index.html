@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="css-property.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
-	<title></title>
+	<title>Material Properties</title>
 
 </head>
 <body>
@@ -24,19 +24,12 @@
 		<div id="upperMenu">
 
 
-			<div class="menuHolder link"  data-go-to="wdw-properties">
-				<div class="fa-marginMenu fa fa-list fa-fw "></div>
-				<p>Property List</p>
-			</div>
-
-			<div class="menuHolder link" data-go-to="wdw-users"">
-				<div class="fa-marginMenu fa fa-user fa-fw "></div>
-				<p>User List</p>
-			</div>
-
 		</div>
 		<div id="lowerMenu">
-
+			<div id="btnSignup" class="menuHolder link" data-go-to="wdw-sign-up"">
+				<div class="fa-marginMenu fa fa-user fa-fw "></div>
+				<p>Sign up</p>
+			</div>
 		</div>
 	</div>
 
@@ -51,29 +44,36 @@
 	<div id="wdw-sign-up" class="wdw">
 
 
-		<div class="propertiesHeader"><h1 class="headerText">Create User</h1></div>
+		<div class="propertiesHeader"><h1 class="headerText">Sign up</h1></div>
 
 		<div class="userBodyWindow">
-	<div class="card">
-
-
-			<input id="txt-create-user-id" class="materialInput" placeholder="id" type="text" required="" style="display: none">
-
-			<input id="txt-create-user-username" class="materialInput" placeholder="username" type="text" required="">
-
-			<input id="txt-create-user-password" class="materialInput" placeholder="password" type="password" required="" autocomplete="new-password">
+			<div class="card">
 
 
 
-			<div align="center" id="btn-save-user" >
-				<div class="contener">
-					<div class="txt_button">Sign Up</div>
-					<div class="circle">&nbsp;</div>
+
+
+
+
+
+
+				<input id="txt-create-user-id" class="materialInput" placeholder="id" type="text" required="" style="display: none">
+
+				<input id="txt-create-user-username" class="materialInput" placeholder="username" type="text" required="">
+
+				<input id="txt-create-user-password" class="materialInput" placeholder="password" type="password" required="" autocomplete="new-password">
+
+
+
+				<div align="center" id="btn-save-user" >
+					<div class="contener">
+						<div class="txt_button">Sign Up</div>
+						<div class="circle">&nbsp;</div>
+					</div>
 				</div>
+
+
 			</div>
-
-
-	</div>
 		</div>
 
 	</div>
@@ -81,10 +81,10 @@
 	<div id="wdw-login" class="wdw">
 
 
-<div class="propertiesHeader"><h1 class="headerText">Log in</h1></div>
+		<div class="propertiesHeader"><h1 class="headerText">Log in</h1></div>
 
 		<div class="propertiesBody">
-		<div class="card">
+			<div class="card">
 
 
 
@@ -103,7 +103,7 @@
 				</div>
 
 
-</div>
+			</div>
 		</div>
 
 
@@ -134,27 +134,34 @@
 		<div class="propertiesHeader"><h1 class="headerText">Create Property</h1></div>
 
 		<div class="propertiesBody">
-		<div class="card">
+			<div class="card">
 
 
+				<form id="frm-property" method="post" action="api-create-property.php" enctype="multipart/form-data">
+					<input id="txt-create-property-id" class="materialInput" placeholder="Username" type="text" name="id" required="" style="display: none">
 
-				<input id="txt-create-property-id" class="materialInput" placeholder="Username" type="text" required="" style="display: none">
+					<input id="txt-create-property-address" class="materialInput" name="address" placeholder="Address" type="text" required="">
 
-				<input id="txt-create-property-address" class="materialInput" placeholder="Address" type="text" required="">
+					<input id="txt-create-property-price" class="materialInput" name="price" placeholder="Price" type="text" required="">
 
-				<input id="txt-create-property-price" class="materialInput" placeholder="Price" type="text" required="">
-
-
-
-				<div align="center" id="btn-save-property" >
-					<div class="contener">
-						<div class="txt_button">Submit</div>
-						<div class="circle">&nbsp;</div>
+					<div class="image-holder">       
+					<div class="image-column">
+						<img class="img-preview" src=""></img>         
+						<input class="file" type="file" name="file-0">
 					</div>
-				</div>
-
 
 </div>
+					<div align="center" id="btn-save-property" >
+						<div class="contener">
+							<div id="saveProperty">Submit</div>
+							<div class="circle">&nbsp;</div>
+						</div>
+					</div>
+				</form>
+
+
+
+			</div>
 		</div>
 	</div>
 

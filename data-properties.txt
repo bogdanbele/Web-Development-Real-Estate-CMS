@@ -1,32 +1,98 @@
 [
     {
         "sUniqueId": 100000,
-        "sAddress": "Rebaek Sopark",
-        "iPrice": "222"
+        "sAddress": "null1422141",
+        "iPrice": "null51251",
+        "sPreviewImage": "AAEAAQAAAAAAAAlHAAAAJDk2MDcwNzA5LWE4YWQtNDI0Mi1iMDQ5LTEzZDU0MWFmODQ1NA.jpg"
+    },
+    {
+        "sUniqueId": 100001,
+        "sAddress": "CHANGED4",
+        "iPrice": "414141",
+        "sPreviewImage": "middlepic.png"
+    },
+    {
+        "sUniqueId": 100002,
+        "sAddress": "51515151",
+        "iPrice": "414141",
+        "sPreviewImage": ""
+    },
+    {
+        "sUniqueId": 100003,
+        "sAddress": "2b414b12",
+        "iPrice": "4b1221b142bb",
+        "sPreviewImage": ""
+    },
+    {
+        "sUniqueId": 100004,
+        "sAddress": "515151",
+        "iPrice": "11111",
+        "sPreviewImage": ""
+    },
+    {
+        "sUniqueId": 100005,
+        "sAddress": "515151",
+        "iPrice": "11111",
+        "sPreviewImage": ""
     },
     {
         "sUniqueId": 100006,
-        "sAddress": "Bele",
-        "iPrice": "Cladiud"
-    },
-    {
-        "sUniqueId": 100009,
-        "sAddress": "Claudiu",
-        "iPrice": "Bele"
-    },
-    {
-        "sUniqueId": 100006,
-        "sAddress": "Claudiu",
-        "iPrice": "test"
+        "sAddress": "page page",
+        "iPrice": "ajajaja",
+        "sPreviewImage": ""
     },
     {
         "sUniqueId": 100007,
-        "sAddress": "Claudiu",
-        "iPrice": "test"
+        "sAddress": "412b412b",
+        "iPrice": "b4124b14",
+        "sPreviewImage": "1.png"
     },
     {
         "sUniqueId": 100008,
-        "sAddress": "Helsiborg Street 5",
-        "iPrice": "1500000"
+        "sAddress": "Rebæk Søpark 5 2 Dør: 346",
+        "iPrice": "15000",
+        "sPreviewImage": "AAEAAQAAAAAAAAlHAAAAJDk2MDcwNzA5LWE4YWQtNDI0Mi1iMDQ5LTEzZDU0MWFmODQ1NA.jpg"
+    },
+    {
+        "sUniqueId": 100010,
+        "sAddress": "Lygtewn 37",
+        "iPrice": "15000",
+        "sPreviewImage": "4.png"
+    },
+    {
+        "sUniqueId": 100010,
+        "sAddress": "freaking tight ",
+        "iPrice": "45000",
+        "sPreviewImage": "4.png",
+        "saImages": [
+            "4.png",
+            "1.png",
+            "AAEAAQAAAAAAAAlHAAAAJDk2MDcwNzA5LWE4YWQtNDI0Mi1iMDQ5LTEzZDU0MWFmODQ1NA.jpg",
+            ""
+        ]
+    },
+    {
+        "sUniqueId": 100011,
+        "sAddress": "Test",
+        "iPrice": "12345",
+        "sPreviewImage": "1.png",
+        "saImages": [
+            "1.png",
+            "2.png",
+            "4.png",
+            "AAEAAQAAAAAAAAlHAAAAJDk2MDcwNzA5LWE4YWQtNDI0Mi1iMDQ5LTEzZDU0MWFmODQ1NA.jpg",
+            "an81.png",
+            "aviendogourmet.png"
+        ]
+    },
+    {
+        "sUniqueId": 100012,
+        "sAddress": "Chewbaka",
+        "iPrice": "12345",
+        "sPreviewImage": "20170209_131307_HDR.jpg",
+        "saImages": [
+            "20170209_131307_HDR.jpg",
+            "AAEAAQAAAAAAAAlHAAAAJDk2MDcwNzA5LWE4YWQtNDI0Mi1iMDQ5LTEzZDU0MWFmODQ1NA.jpg"
+        ]
     }
 ]

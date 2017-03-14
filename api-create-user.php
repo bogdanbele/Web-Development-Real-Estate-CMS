@@ -41,7 +41,7 @@ file_put_contents( $sFileNameCounter , $iCount );
 	$jUsers->sUniqueId = 100000 + $iCounter;
 	$jUsers->sUsername = $sUsername; // ->   ->   ->    ->   ->
 	$jUsers->sPassword = $sPassword; // ->   ->   ->    ->   ->
-$jUsers->sAccesRights = $sAccesRights;
+$jUsers->iAccesRights = $sAccesRights;
 	// push it to the array
 	array_push( $ajUsers , $jUsers );
 	// var_dump( $sajUsers );

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DESKTOP NOTIFICATION</title>
+</head>
+<body>
+
+  <h1>NOTIFY ME</h1>
+
+  <script>
+    
+    Notification.requestPermission().then(function(result) {
+      console.log(result);
+    });
+
+
+    function spawnNotification(theBody,theIcon,theTitle) {
+      var options = {
+        body: theBody,
+        icon: "images/"+theIcon
+      }
+      var n = new Notification(theTitle,options);
+    }
+
+
+    spawnNotification("THE BODY", "1.jpg", "Tittle");
+
+  </script>
+
+</body>
+</html>
