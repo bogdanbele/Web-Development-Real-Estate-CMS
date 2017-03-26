@@ -200,7 +200,7 @@ input{
 	display: flex;
 	z-index: 5;
 	height: 15vh;
-	background-color: #E91E63;
+	background-color: #2196F3;
 	width: 100vw;
 	box-shadow: 0 3px 4px rgba(0,0,0,0.15), 0 6px 6px rgba(0,0,0,0.12);
 }
@@ -211,4 +211,6 @@ input{
     flex-direction: column;
     background-color: #ECEFF1;
 }
+
+
 

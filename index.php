@@ -1,4 +1,10 @@
+<?php
+session_start();
+
+$_SESSION['username']="";
+?>
 <!DOCTYPE html>
+
 <html>
 <head>
 	<meta charset="utf-8">
@@ -18,15 +24,30 @@
 		<div class="bar1"></div>
 		<div class="bar2"></div>
 		<div class="bar3"></div>
+
 	</div>
 
 	<div id="menu" class="materialBoxShadow">
+
 		<div id="upperMenu">
 
 
 		</div>
 		<div id="lowerMenu">
-			<div id="btnSignup" class="menuHolder link" data-go-to="wdw-sign-up"">
+			<?php
+			if (!isset($_SESSION)){
+				echo "";
+			}
+			else {
+
+			?>
+						<div id="welcomeMessage">Welcome
+						</div><?php echo $_SESSION["username"];
+					}
+
+
+						?>
+						<div id="btnSignup" class="menuHolder link" data-go-to="wdw-sign-up"">
 				<div class="fa-marginMenu fa fa-user fa-fw "></div>
 				<p>Sign up</p>
 			</div>
@@ -44,7 +65,11 @@
 	<div id="wdw-sign-up" class="wdw">
 
 
-		<div class="propertiesHeader"><h1 class="headerText">Sign up</h1></div>
+		<div class="propertiesHeader"><h1 class="headerText">Sign up
+
+
+
+		</h1></div>
 
 		<div class="userBodyWindow">
 			<div class="card">
@@ -80,32 +105,34 @@
 
 	<div id="wdw-login" class="wdw">
 
-
 		<div class="propertiesHeader"><h1 class="headerText">Log in</h1></div>
 
 		<div class="propertiesBody">
 			<div class="card">
 
 
+				<form id="frm-login" method="post" action="api-login.php" enctype="multipart/form-data">
 
 
-				<input id="username" class="materialInput" placeholder="Username" type="text" required="">
+					<input id="txt-username" class="materialInput" name="username" placeholder="Username" type="text" required="">
 
-				<input id="password" class="materialInput" placeholder="Password" type="password" required="">
+					<input id="txt-password" class="materialInput" name="password" placeholder="Password" type="text" required="">
 
 
 
-				<div align="center" id="btn-login" >
-					<div class="contener">
-						<div class="txt_button">Submit</div>
-						<div class="circle">&nbsp;</div>
+					<div align="center">
+						<div class="contener">
+							<div id="tryLoggin">Submit</div>
+							<div class="circle">&nbsp;</div>
+						</div>
 					</div>
-				</div>
+						</div>
+				</form>
+
 
 
 			</div>
 		</div>
-
 
 	</div>
 
@@ -144,9 +171,9 @@
 
 					<input id="txt-create-property-price" class="materialInput" name="price" placeholder="Price" type="text" required="">
 
-					<div class="image-holder">       
+					<div class="image-holder">
 					<div class="image-column">
-						<img class="img-preview" src=""></img>         
+						<img class="img-preview" src=""></img>
 						<input class="file" type="file" name="file-0">
 					</div>
 
@@ -168,7 +195,7 @@
 
 	<script src="sweetalert-master/dist/sweetalert.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	
+
 	<script type="text/javascript" src="js-app.js"></script>
 	<script>
 

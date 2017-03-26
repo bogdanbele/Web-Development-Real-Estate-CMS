@@ -6,21 +6,15 @@
         "iAccesRights": 3
     },
     {
-        "sUniqueId": 100010,
-        "sUsername": "1234",
-        "sPassword": "1",
-        "iAccesRights": 1
-    },
-    {
-        "sUniqueId": 100011,
-        "sUsername": "",
-        "sPassword": "",
-        "iAccesRights": 2
-    },
-    {
         "sUniqueId": 100012,
         "sUsername": "bogdan",
         "sPassword": "test",
+        "iAccesRights": 2
+    },
+    {
+        "sUniqueId": 100013,
+        "sUsername": "444",
+        "sPassword": "11",
         "iAccesRights": 1
     }
 ]
