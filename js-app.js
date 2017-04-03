@@ -416,20 +416,40 @@ console.log("going to update");
 			"processData":false,
 			"cache":false
 		}).done(function(data){
+			$( "#upperMenu" ).empty();
+			$("#lowerMenu").empty();
 	console.log("PARSING");
-			// We decode the (data) in order to transform it into a JSON object.
-			console.log(data);
-			var messageBackData = JSON.parse(data);
-			console.log(messageBackData);
-			for(var i = 0; i < messageBackData.length; i++) {
-    		var obj = messageBackData[i];
-    		console.log(obj.position);
-				console.log("x");
-}
+				// We decode the (data) in order to transform it into a JSON object.
+				console.log(data);
+				var messageBackData = JSON.parse(data);
+				console.log(messageBackData);
+				console.log(messageBackData.length);
+				var jsonArray = messageBackData[1];
+
+
+				for(var i = 0; i < messageBackData.length; i++) {
+					console.log(i);
+	    		var obj = messageBackData[i];
+					var possition = messageBackData[i].position;
+					console.log(messageBackData[i].position);
+					if(obj.position == "top"){
+						console.log("TOP");
+						console.log(messageBackData[i].divsToAppend);
+						$("#upperMenu").append(messageBackData[i].divsToAppend);
+
+					}
+					else if (obj.position == "bottom" ){
+						console.log(messageBackData[i].divsToAppend);
+						$("#lowerMenu").prepend(messageBackData[i].divsToAppend);
+					}
+
+};
 
 
 
-			$("#upperMenu").prepend(messageBackData.divsToAppend);
+
+
+
 		});
 
 
