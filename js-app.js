@@ -32,6 +32,39 @@ var oldTitle = document.title;
 /************************************************************************/
 /************************************************************************/
 /************************************************************************/
+$("#previewMap").click(function(){
+	console.log("X");
+	var sLatitude = $("#txt-lat").val();
+	var sLong  = $("#txt-lon").val();
+	console.log(sLatitude);
+	console.log(sLong);
+	sLatitude = parseFloat(sLatitude);
+	sLong = parseFloat(sLong);
+	initMap(sLatitude, sLong);
+});
+
+
+function initMap(lat, lng) {
+
+	var iLat = lat;
+	var iLng = lng;
+	  var myLatLng = {lat: iLat, lng: iLng};
+
+	  var map = new google.maps.Map(document.getElementById('map'), {
+	    zoom: 8,
+	    center: myLatLng
+	  });
+
+	  var marker = new google.maps.Marker({
+	    position: myLatLng,
+	    map: map,
+	    title: 'Hello World!'
+	  });
+}
+
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
 
 
 // Title flashing which shows only the name ( restricted by space in the tittle bar)

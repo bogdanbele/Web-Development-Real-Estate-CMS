@@ -14,6 +14,15 @@ body{
 	overflow: hidden;
 }
 
+#map {
+	height: 100%;
+}
+
+#mapContainer {
+	height: 400px;
+	width: 400px;
+}
+
 .materialBoxShadow {
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
@@ -58,7 +67,7 @@ input{
     padding: 3vh;
     /* padding-top: 9vh; */
     background-color: white;
-    margin-top: 10vh;
+    margin-top: 7vh;
 }
 
 .container {
@@ -102,7 +111,7 @@ input{
 }
 #menu-bars .menu-bar:not(:first-child){
 	margin-top: 3px;
-}		
+}
 #menu{
 	position: absolute;
 	display: flex;
@@ -150,8 +159,8 @@ input{
 }
 
 #upperMenu .link {
-	
-	
+
+
 }
 
 .fa-marginMenu {
@@ -206,11 +215,10 @@ input{
 }
 
 .propertiesBody{
-	display: flex; 
+
+	justify-content: space-around;
+	display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     background-color: #ECEFF1;
 }
-
-
-

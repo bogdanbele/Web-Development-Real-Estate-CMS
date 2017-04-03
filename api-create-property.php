@@ -1,6 +1,8 @@
 <?php
 $sAddress = $_POST['address'];
 $iPrice = $_POST['price'];
+$sLat = $_POST['lat'];
+$sLong = $_POST['lon'];
 $sFileName = "data-properties.txt";
 $sPreviewImage = "";
 $aImagesArray= array();
@@ -34,6 +36,8 @@ if( !is_array($ajProperties ) ){
 	$jProperty->iPrice = $iPrice; // ->   ->   ->    ->   ->
 	$jProperty->sPreviewImage = $sPreviewImage;
 	$jProperty->saImages = $aImagesArray;
+	$jProperty->lat = $sLat;
+	$jProperty->lon = $sLong;
 	array_push( $ajProperties , $jProperty );
 	$sajProperties = json_encode( $ajProperties , JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE );
 	file_put_contents( $sFileName , $sajProperties );

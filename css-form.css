@@ -13,7 +13,7 @@ h1, input::-webkit-input-placeholder, button {
 }
 
 input {
-    margin: 40px 25px;
+    margin: 20px 25px;
     width: 30vw;
     display: block;
     border: none;

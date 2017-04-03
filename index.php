@@ -171,6 +171,8 @@ $_SESSION['username']="";
 
 					<input id="txt-create-property-price" class="materialInput" name="price" placeholder="Price" type="text" required="">
 
+					<input id="txt-lat" class="materialInput" name="lat" placeholder="Latitude" type="text" required="">
+					<input id="txt-lon" class="materialInput" name="lon" placeholder="Longitude" type="text" required="">
 					<div class="image-holder">
 					<div class="image-column">
 						<img class="img-preview" src=""></img>
@@ -189,6 +191,9 @@ $_SESSION['username']="";
 
 
 			</div>
+	<div class="card">		<div id="mapContainer"> <div id="map"></div> </div>
+	<button id="previewMap" class="btn orange" type="button"><span>Preview Map Location</span></button>
+</div>
 		</div>
 	</div>
 
@@ -197,6 +202,11 @@ $_SESSION['username']="";
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 	<script type="text/javascript" src="js-app.js"></script>
+	<script>
+
+	 </script>
+	 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIo0O5Eqo_RFm14eGPkowYYhHpnVLF5SI"
+	 async defer></script>
 	<script>
 
 	</script>

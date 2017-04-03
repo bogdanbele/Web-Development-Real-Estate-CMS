@@ -84,5 +84,69 @@
         "saImages": [
             "WoWScrnShot_032017_145111.jpg"
         ]
+    },
+    {
+        "sUniqueId": 100009,
+        "sAddress": "Hallur",
+        "iPrice": "420",
+        "sPreviewImage": "png.png",
+        "saImages": [
+            "png.png",
+            "Aviendo-Banner-Wide.jpg",
+            "designbase wide.png",
+            "aviendogourmet.png",
+            "batranul.png",
+            "aviendogourmet.png"
+        ]
+    },
+    {
+        "sUniqueId": 100010,
+        "sAddress": "Hallur",
+        "iPrice": "420",
+        "sPreviewImage": "png.png",
+        "saImages": [
+            "png.png",
+            "Aviendo-Banner-Wide.jpg",
+            "designbase wide.png",
+            "aviendogourmet.png",
+            "batranul.png",
+            "aviendogourmet.png"
+        ]
+    },
+    {
+        "sUniqueId": 100011,
+        "sAddress": "12412",
+        "iPrice": "11",
+        "sPreviewImage": "Blueberry-Image.png",
+        "saImages": [
+            "Blueberry-Image.png"
+        ],
+        "lat": "21",
+        "lon": null
+    },
+    {
+        "sUniqueId": 100012,
+        "sAddress": "hallur's house",
+        "iPrice": "420",
+        "sPreviewImage": "an81.png",
+        "saImages": [
+            "an81.png",
+            "an81.png",
+            "aviendologo white.png"
+        ],
+        "lat": "12",
+        "lon": "9"
+    },
+    {
+        "sUniqueId": 100013,
+        "sAddress": "Ian the cool guy",
+        "iPrice": "500",
+        "sPreviewImage": "aviendogourmet.png",
+        "saImages": [
+            "aviendogourmet.png",
+            "an81.png"
+        ],
+        "lat": "11",
+        "lon": "12"
     }
 ]
