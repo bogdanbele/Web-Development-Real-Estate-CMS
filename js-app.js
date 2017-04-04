@@ -36,7 +36,6 @@ var validator = 0;
 /************************************************************************/
 /************************************************************************/
 $("#previewMap").click(function(){
-	console.log("X");
 	var sLatitude = $("#txt-lat").val();
 	var sLong  = $("#txt-lon").val();
 	console.log(sLatitude);
@@ -54,9 +53,36 @@ function initMap(lat, lng) {
 	  var myLatLng = {lat: iLat, lng: iLng};
 
 	  var map = new google.maps.Map(document.getElementById('map'), {
-	    zoom: 8,
+	    zoom: 6,
 	    center: myLatLng
 	  });
+
+	  var marker = new google.maps.Marker({
+	    position: myLatLng,
+	    map: map,
+	    title: 'Hello World!'
+	  });
+}
+
+
+function initMap2(lat, lng ,number) {
+
+	var iLat = lat;
+	var iLng = lng;
+	var myLatLng = {lat: iLat, lng: iLng};
+
+	// Testing lat and long inside the function.
+	//console.log(lat, lng);
+	var myLatlng = new google.maps.LatLng(lat,lng);
+
+	var map = new google.maps.Map(document.getElementById('map'+number), {
+		zoom: 12,
+		center: myLatlng
+	});
+
+	google.maps.event.addListener(map,'idle',function(event) {
+	map.setCenter(myLatlng); //force to set original center position
+});
 
 	  var marker = new google.maps.Marker({
 	    position: myLatLng,
@@ -408,6 +434,7 @@ function validatedLoggin(){
 	/************************************************************************/
 
 	$('[data-go-to="wdw-properties"]').click(function(){
+
 		/*	fnGetProperties();*/
 // I have removed this function because I impleted the userView which reads if the user
 // looks at the wdw-properties, so we no longer need to check the click
@@ -519,7 +546,8 @@ function validatedLoggin(){
 			$("#lowerMenu").empty();
 	console.log("PARSING");
 				// We decode the (data) in order to transform it into a JSON object.
-				console.log(data);
+				// Enable the console log bellow to see the data we get ( the divs and their possition );
+				//console.log(data);
 				var messageBackData = JSON.parse(data);
 				console.log(messageBackData);
 				console.log(messageBackData.length);
@@ -530,15 +558,15 @@ function validatedLoggin(){
 					console.log(i);
 	    		var obj = messageBackData[i];
 					var possition = messageBackData[i].position;
-					console.log(messageBackData[i].position);
+					//console.log(messageBackData[i].position);
 					if(obj.position == "top"){
-						console.log("TOP");
-						console.log(messageBackData[i].divsToAppend);
+						//console.log("TOP");
+						//console.log(messageBackData[i].divsToAppend);
 						$("#upperMenu").append(messageBackData[i].divsToAppend);
 
 					}
 					else if (obj.position == "bottom" ){
-						console.log(messageBackData[i].divsToAppend);
+						//console.log(messageBackData[i].divsToAppend);
 						$("#lowerMenu").prepend(messageBackData[i].divsToAppend);
 					}
 
@@ -702,14 +730,27 @@ function validatedLoggin(){
 	/************************************************************************/
 	/************************************************************************/
 	/************************************************************************/
+function propertiesMapLoader(){
+	var sUrl = "api-get-all-properties.php?maxId="+iLastPropertyId;
+	$.getJSON( sUrl , function( jData ){
+		for( var i = 0 ; i < jData.length ; i++ ){
 
+			// Testing the value of I from the newly created api-get-all-properties;
+			//console.log("I checker - " + i );
+			var propLat = parseFloat(jData[i].lat);
+			var propLon = parseFloat(jData[i].lon);
+			initMap2(propLat, propLon, i+2);
+		}
+
+	});
+}
 
 	function fnGetProperties(){
 
 
 
 
-		console.log("gettingProperties");
+	//	console.log("gettingProperties");
 	// display properties
 	var sUrl = "api-get-properties.php?maxId="+iLastPropertyId;
 	$.getJSON( sUrl , function( jData ){
@@ -725,6 +766,8 @@ function validatedLoggin(){
 		<div class="lbl-property-id">{{id}}</div>\
 		<div class="lbl-property-address">{{address}}</div>\
 		<div class="lbl-property-price">{{price}}</div>\
+		<div class="lbl-property-images">{{image}}</div>\
+		<div class="lbl-property-map-container"><div id="map{{i}}"></div></div>\
 		'+fnPropertyLabelAdminCheck()+'\
 		</div>';
 
@@ -738,13 +781,59 @@ function validatedLoggin(){
 			}
 		}
 
-		console.log(jData);
+
+		function fetchImages(count){
+		var imagesToDisplay = "";
+		console.log( "count images = " + count.saImages.length);
+		if( count.saImages.length == 0 ){
+		return "";
+		}
+		else{
+		for( var i = 0; i < count.saImages.length; i++ ){
+
+			imagesToDisplay += '<img class="propertyImages" src=images/'+count.saImages[i]+'>';
+
+			console.log(" image count = "+(i+1)+"size = " + count.saImages.length );
+		if ( i+1 == count.saImages.length ){
+		return(imagesToDisplay);
+		}
+		}
+		}
+
+
+		}
+		// Testing response from api
+		// console.log(jData);
 		for( var i = 0 ; i < jData.length ; i++ ){
+			var mapCounter = i+2;
 			var sPropertyTemplate = sProperty;
 			sPropertyTemplate = sPropertyTemplate.replace( "{{id}}" , jData[i].sUniqueId );
 			sPropertyTemplate = sPropertyTemplate.replace( "{{address}}" , jData[i].sAddress );
 			sPropertyTemplate = sPropertyTemplate.replace( "{{price}}" , jData[i].iPrice );
+			sPropertyTemplate = sPropertyTemplate.replace( "{{i}}" ,mapCounter );
+			//sPropertyTemplate = sPropertyTemplate.replace( "{{image}}" ,jData[i].saImages.length );
+			sPropertyTemplate = sPropertyTemplate.replace( "{{image}}" , fetchImages(jData[i]) );
 			$("#propertiesBody").append( sPropertyTemplate );
+
+			var mapValue = "#map"+mapCounter;
+
+			// Testing the map value. Enable it to see which map is affected.
+			// console.log(mapValue);
+						$(mapValue).css("height", "100%");
+
+						// Testing the I value. Enable to see the size of I.
+						//console.log("i = " + i );
+						var propLat = parseFloat(jData[i].lat);
+						var propLon = parseFloat(jData[i].lon);
+
+						// Testing the Latitude and Longitude after parsing.
+						//console.log(propLat, propLon);
+						initMap2(propLat, propLon, mapCounter);
+
+
+
+
+
 
 
 			iLastPropertyId++;
@@ -755,7 +844,6 @@ function validatedLoggin(){
 				// IF we have a new property, the title will flash with it's name
 				fnFlashTitle(jData[i].sAddress);
 			}
-
 
 
 
@@ -842,7 +930,7 @@ $( document ).ready(function() {
 
 function fnCreatePropertyTimer(){
 	fnGetProperties();
-	console.log(iLastPropertyId);
+	//console.log(iLastPropertyId);
 	window.timerProperties = setInterval(fnGetProperties, 1500);
 }
 
@@ -856,7 +944,8 @@ function fnStartUserTimeout(){
 
 
 	if (userView == "wdw-properties"){
-		console.log("called");
+		propertiesMapLoader();
+		//console.log("called");
 		if(bTimerCheck == false ){
 
 			bTimerCheck = true;

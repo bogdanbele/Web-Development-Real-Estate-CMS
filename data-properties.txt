@@ -1,44 +1,86 @@
 [
     {
-        "sUniqueId": 100006,
-        "sAddress": "page page",
-        "iPrice": "ajajaja",
-        "sPreviewImage": ""
+        "sUniqueId": 100004,
+        "sAddress": "Test ",
+        "iPrice": "test new",
+        "sPreviewImage": "download.jpg",
+        "saImages": [
+            "download.jpg",
+            "Self-build.jpg",
+            "download.jpg",
+            "Self-build.jpg",
+            "download.jpg",
+            "Self-build.jpg"
+        ],
+        "lat": "12",
+        "lon": "33"
     },
     {
-        "sUniqueId": 100006,
-        "sAddress": "page page",
-        "iPrice": "ajajaja",
-        "sPreviewImage": ""
+        "sUniqueId": 100001,
+        "sAddress": "Rebæk Søpark 5 2 Dør: 346",
+        "iPrice": "2660",
+        "sPreviewImage": "rebaek.jpg",
+        "saImages": [
+            "rebaek.jpg",
+            "rebaeksoparkhallwayentrance0.png",
+            "Kollegiet.png",
+            "89441715.jpg",
+            "IMGP2097.jpg"
+        ],
+        "lat": "55.662702",
+        "lon": "12.457802"
     },
     {
-        "sUniqueId": 100006,
-        "sAddress": "page page",
-        "iPrice": "ajajaja",
-        "sPreviewImage": ""
+        "sUniqueId": 100002,
+        "sAddress": "Rebæk Søpark 5 2 Dør: 346",
+        "iPrice": "2311",
+        "sPreviewImage": "rebaek.jpg",
+        "saImages": [
+            "rebaek.jpg"
+        ],
+        "lat": "56.044293",
+        "lon": "12.457802"
     },
     {
-        "sUniqueId": 100006,
-        "sAddress": "page page",
-        "iPrice": "ajajaja",
-        "sPreviewImage": ""
+        "sUniqueId": 100004,
+        "sAddress": "Test ",
+        "iPrice": "test new",
+        "sPreviewImage": "download.jpg",
+        "saImages": [
+            "download.jpg",
+            "Self-build.jpg",
+            "download.jpg",
+            "Self-build.jpg",
+            "download.jpg",
+            "Self-build.jpg"
+        ],
+        "lat": "12",
+        "lon": "33"
     },
     {
-        "sUniqueId": 100006,
-        "sAddress": "page page",
-        "iPrice": "ajajaja",
-        "sPreviewImage": ""
+        "sUniqueId": 100001,
+        "sAddress": "Rebæk Søpark 5 2 Dør: 346",
+        "iPrice": "2660",
+        "sPreviewImage": "rebaek.jpg",
+        "saImages": [
+            "rebaek.jpg",
+            "rebaeksoparkhallwayentrance0.png",
+            "Kollegiet.png",
+            "89441715.jpg",
+            "IMGP2097.jpg"
+        ],
+        "lat": "55.662702",
+        "lon": "12.457802"
     },
     {
-        "sUniqueId": 100006,
-        "sAddress": "page page",
-        "iPrice": "ajajaja",
-        "sPreviewImage": ""
-    },
-    {
-        "sUniqueId": 100006,
-        "sAddress": "page page",
-        "iPrice": "ajajaja",
-        "sPreviewImage": ""
+        "sUniqueId": 100002,
+        "sAddress": "Rebæk Søpark 5 2 Dør: 346",
+        "iPrice": "2311",
+        "sPreviewImage": "rebaek.jpg",
+        "saImages": [
+            "rebaek.jpg"
+        ],
+        "lat": "56.044293",
+        "lon": "12.457802"
     }
 ]

@@ -141,14 +141,14 @@ $_SESSION['username']="";
 	<!-- ********************************************************************** -->
 	<div id="wdw-properties" class="wdw">
 		<div class="propertiesHeader"><h1 class="headerText">Property list</h1></div>
-		<div id="propertiesBody">'
+		<div id="propertiesBody" class="propertiesRow">
 		</div>
 
 	</div>
 
 	<div id="wdw-users" class="wdw">
 		<div class="propertiesHeader"><h1 class="headerText">Users List</h1></div>
-		<div id="userBody">
+		<div id="userBody" class="propertiesRow">
 		</div>
 	</div>
 
