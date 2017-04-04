@@ -19,7 +19,7 @@ $_SESSION['username']="";
 
 </head>
 <body>
-
+	<audio id="notification" style="display:none" src="notif.mp3"></audio>
 	<div id="menu-bars" class="container" onclick="changeMenuToX(this)">
 		<div class="bar1"></div>
 		<div class="bar2"></div>
@@ -82,11 +82,11 @@ $_SESSION['username']="";
 
 
 
-				<input id="txt-create-user-id" class="materialInput" placeholder="id" type="text" required="" style="display: none">
+				<input id="txt-create-user-id" class="materialInput" placeholder="id" type="text" data-min="0" data-max="15" required="" style="display: none">
 
-				<input id="txt-create-user-username" class="materialInput" placeholder="username" type="text" required="">
+				<input id="txt-create-user-username" class="materialInput" placeholder="username" type="text" data-min="3" data-max="15" required="">
 
-				<input id="txt-create-user-password" class="materialInput" placeholder="password" type="password" required="" autocomplete="new-password">
+				<input id="txt-create-user-password" class="materialInput" placeholder="password" type="password" required="" data-min="3" data-max="15" autocomplete="new-password">
 
 
 

@@ -6,147 +6,39 @@
         "sPreviewImage": ""
     },
     {
-        "sUniqueId": 100008,
-        "sAddress": "Rebæk Søpark 5 2 Dør: 346",
-        "iPrice": "15000",
-        "sPreviewImage": "AAEAAQAAAAAAAAlHAAAAJDk2MDcwNzA5LWE4YWQtNDI0Mi1iMDQ5LTEzZDU0MWFmODQ1NA.jpg"
+        "sUniqueId": 100006,
+        "sAddress": "page page",
+        "iPrice": "ajajaja",
+        "sPreviewImage": ""
     },
     {
-        "sUniqueId": 100010,
-        "sAddress": "Lygtewn 37",
-        "iPrice": "15000",
-        "sPreviewImage": "4.png"
+        "sUniqueId": 100006,
+        "sAddress": "page page",
+        "iPrice": "ajajaja",
+        "sPreviewImage": ""
     },
     {
-        "sUniqueId": 100010,
-        "sAddress": "freaking tight ",
-        "iPrice": "45000",
-        "sPreviewImage": "4.png",
-        "saImages": [
-            "4.png",
-            "1.png",
-            "AAEAAQAAAAAAAAlHAAAAJDk2MDcwNzA5LWE4YWQtNDI0Mi1iMDQ5LTEzZDU0MWFmODQ1NA.jpg",
-            ""
-        ]
+        "sUniqueId": 100006,
+        "sAddress": "page page",
+        "iPrice": "ajajaja",
+        "sPreviewImage": ""
     },
     {
-        "sUniqueId": 100011,
-        "sAddress": "Test",
-        "iPrice": "12345",
-        "sPreviewImage": "1.png",
-        "saImages": [
-            "1.png",
-            "2.png",
-            "4.png",
-            "AAEAAQAAAAAAAAlHAAAAJDk2MDcwNzA5LWE4YWQtNDI0Mi1iMDQ5LTEzZDU0MWFmODQ1NA.jpg",
-            "an81.png",
-            "aviendogourmet.png"
-        ]
+        "sUniqueId": 100006,
+        "sAddress": "page page",
+        "iPrice": "ajajaja",
+        "sPreviewImage": ""
     },
     {
-        "sUniqueId": 100012,
-        "sAddress": "Chewbaka",
-        "iPrice": "12345",
-        "sPreviewImage": "20170209_131307_HDR.jpg",
-        "saImages": [
-            "20170209_131307_HDR.jpg",
-            "AAEAAQAAAAAAAAlHAAAAJDk2MDcwNzA5LWE4YWQtNDI0Mi1iMDQ5LTEzZDU0MWFmODQ1NA.jpg"
-        ]
+        "sUniqueId": 100006,
+        "sAddress": "page page",
+        "iPrice": "ajajaja",
+        "sPreviewImage": ""
     },
     {
-        "sUniqueId": 100013,
-        "sAddress": "Rebæk Søpark 5 2 Dør: 346",
-        "iPrice": "15.000",
-        "sPreviewImage": "9186621409253285434-account_id=1.jpg",
-        "saImages": [
-            "9186621409253285434-account_id=1.jpg",
-            "USA 289.jpg",
-            "shitpost.png",
-            "maxresdefault.jpg",
-            "single-egg-1.png",
-            "USA 289.jpg"
-        ]
-    },
-    {
-        "sUniqueId": 100007,
-        "sAddress": "55h1",
-        "iPrice": "h4hhhh",
-        "sPreviewImage": "WoWScrnShot_032317_153616.jpg",
-        "saImages": [
-            "WoWScrnShot_032317_153616.jpg"
-        ]
-    },
-    {
-        "sUniqueId": 100008,
-        "sAddress": "55151",
-        "iPrice": "11",
-        "sPreviewImage": "WoWScrnShot_032017_145111.jpg",
-        "saImages": [
-            "WoWScrnShot_032017_145111.jpg"
-        ]
-    },
-    {
-        "sUniqueId": 100009,
-        "sAddress": "Hallur",
-        "iPrice": "420",
-        "sPreviewImage": "png.png",
-        "saImages": [
-            "png.png",
-            "Aviendo-Banner-Wide.jpg",
-            "designbase wide.png",
-            "aviendogourmet.png",
-            "batranul.png",
-            "aviendogourmet.png"
-        ]
-    },
-    {
-        "sUniqueId": 100010,
-        "sAddress": "Hallur",
-        "iPrice": "420",
-        "sPreviewImage": "png.png",
-        "saImages": [
-            "png.png",
-            "Aviendo-Banner-Wide.jpg",
-            "designbase wide.png",
-            "aviendogourmet.png",
-            "batranul.png",
-            "aviendogourmet.png"
-        ]
-    },
-    {
-        "sUniqueId": 100011,
-        "sAddress": "12412",
-        "iPrice": "11",
-        "sPreviewImage": "Blueberry-Image.png",
-        "saImages": [
-            "Blueberry-Image.png"
-        ],
-        "lat": "21",
-        "lon": null
-    },
-    {
-        "sUniqueId": 100012,
-        "sAddress": "hallur's house",
-        "iPrice": "420",
-        "sPreviewImage": "an81.png",
-        "saImages": [
-            "an81.png",
-            "an81.png",
-            "aviendologo white.png"
-        ],
-        "lat": "12",
-        "lon": "9"
-    },
-    {
-        "sUniqueId": 100013,
-        "sAddress": "Ian the cool guy",
-        "iPrice": "500",
-        "sPreviewImage": "aviendogourmet.png",
-        "saImages": [
-            "aviendogourmet.png",
-            "an81.png"
-        ],
-        "lat": "11",
-        "lon": "12"
+        "sUniqueId": 100006,
+        "sAddress": "page page",
+        "iPrice": "ajajaja",
+        "sPreviewImage": ""
     }
 ]

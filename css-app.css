@@ -14,6 +14,10 @@ body{
 	overflow: hidden;
 }
 
+.invalid{
+			border: 1px solid red;
+		}
+
 #map {
 	height: 100%;
 }
@@ -120,7 +124,7 @@ input{
 	left: -250px;
 	width: 250px;
 	height: 100vh;
-	background-color: #00B0FF;
+	background-color: #DD4124;
 	color: white;
 	z-index: 99;
 }
@@ -154,7 +158,8 @@ input{
 
 .menuHolder:hover{
 	transition: all 1s ease;
-	background: #81D4FA;
+	background: white;
+	color: #DD4124;
 
 }
 
@@ -209,7 +214,7 @@ input{
 	display: flex;
 	z-index: 5;
 	height: 15vh;
-	background-color: #2196F3;
+	background-color: #DD4124;
 	width: 100vw;
 	box-shadow: 0 3px 4px rgba(0,0,0,0.15), 0 6px 6px rgba(0,0,0,0.12);
 }

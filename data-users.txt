@@ -16,5 +16,35 @@
         "sUsername": "444",
         "sPassword": "11",
         "iAccesRights": 1
+    },
+    {
+        "sUniqueId": 100014,
+        "sUsername": "33",
+        "sPassword": "",
+        "iAccesRights": 2
+    },
+    {
+        "sUniqueId": 100025,
+        "sUsername": "4141",
+        "sPassword": "44141",
+        "iAccesRights": 1
+    },
+    {
+        "sUniqueId": 100026,
+        "sUsername": "5151",
+        "sPassword": "113",
+        "iAccesRights": 1
+    },
+    {
+        "sUniqueId": 100027,
+        "sUsername": "414141",
+        "sPassword": "133",
+        "iAccesRights": 1
+    },
+    {
+        "sUniqueId": 100028,
+        "sUsername": "41411",
+        "sPassword": "133",
+        "iAccesRights": 1
     }
 ]

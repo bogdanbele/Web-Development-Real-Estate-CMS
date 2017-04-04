@@ -28,6 +28,9 @@ var bMenuOpen = false;
 // In order to enable title flashing we need to old the default title in a var
 var oldTitle = document.title;
 
+// We'll keep track of our validation errors through this.
+var validator = 0;
+
 
 /************************************************************************/
 /************************************************************************/
@@ -292,48 +295,111 @@ $("#btn-save-user").click(function(){
 	var sId = $("#txt-create-user-id").val();
 	var sUsername = $("#txt-create-user-username").val();
 	var sPassword = $("#txt-create-user-password").val();
-console.log("intialization");
-	// if this id something, then update
-	if( sId ){
-		var sUrl = "api-update-user.php?id="+sId+"&username="+sUsername+"&password="+sPassword;
-		iLastUserId = 0;
-console.log("intialization");
-		swal({
-			title:  sUsername + " has been updated",
-			text: "Password = " + sPassword,
-			type: "success",
-			showCancelButton: true,
-			confirmButtonColor: "#64DD17",
-			confirmButtonText: "Go back to the user list",
-			cancelButtonText: "Continue editting",
-			closeOnConfirm: true
-		},
-		function(){
-			$(".wdw").hide();
-			$("#wdw-users").css( {"display":"flex"} );
-			userView = "wdw-users";
-			fnStartUserTimeout();
-console.log("going to update");
-		});
+	console.log("intialization");
 
+			var oParent = $(this).parent();
+			validator = 0;
+			var aoChildren = oParent.children('input');
+			for( var i = 0; i < aoChildren.length; i++ ){
+				var oInput = $( aoChildren[i] );
+				oInput.removeClass('invalid');
 
-
-
-
-
-		$("#userBody").empty();
-
-
-	}else{
-
-
-		var sUrl = "api-create-user.php?username="+sUsername+"&password="+sPassword;
-		swal("User create !", sPassword+" is the current password!", "success");
-			$.getJSON( sUrl, function( jData){
-				if( jData.status == "ok" ){
+				var sText = oInput.val();
+				var iMin = oInput.attr('data-min');
+				var iMax = oInput.attr('data-max');
+				if( sText.length < iMin || sText.length > iMax ){
+					console.log("invalid");
+					oInput.addClass('invalid');
 				}
-	});
+				else {
+
+					validator++;
+					if (validator ==  aoChildren.length ) {
+						validatedLoggin();
+
+					}
+					else {
+						swal({
+							title:  "Failed to sign up.",
+							text: "Your username and password must be between 3 and 15 characters.",
+							type: "error"
+						});
+					}
+
+
+				}
+
+
+			}
+
+
+function validatedLoggin(){
+
+		if( sId ){
+			var sUrl = "api-update-user.php?id="+sId+"&username="+sUsername+"&password="+sPassword;
+			iLastUserId = 0;
+	console.log("intialization");
+			swal({
+				title:  sUsername + " has been updated",
+				text: "Password = " + sPassword,
+				type: "success",
+				showCancelButton: true,
+				confirmButtonColor: "#64DD17",
+				confirmButtonText: "Go back to the user list",
+				cancelButtonText: "Continue editting",
+				closeOnConfirm: true
+			},
+			function(){
+				$(".wdw").hide();
+				$("#wdw-users").css( {"display":"flex"} );
+				userView = "wdw-users";
+				fnStartUserTimeout();
+	console.log("going to update");
+			});
+
+
+
+
+
+
+			$("#userBody").empty();
+
+
+		}else{
+
+
+			var sUrl = "api-create-user.php?username="+sUsername+"&password="+sPassword;
+			swal("User create !", sPassword+" is the current password!", "success");
+
+			swal({
+				title:  sUsername + " has been created",
+				text: "Password = " + sPassword,
+				type: "success",
+				showCancelButton: false,
+				confirmButtonColor: "#64DD17",
+				confirmButtonText: "Go to the user list",
+				closeOnConfirm: true
+			},
+			function(){
+				$(".wdw").hide();
+				$("#wdw-users").css( {"display":"flex"} );
+				userView = "wdw-users";
+				fnStartUserTimeout();
+		console.log("going to update");
+			});
+
+
+
+
+
+
+				$.getJSON( sUrl, function( jData){
+					if( jData.status == "ok" ){
+					}
+		});
+	}
 }
+
 });
 
 
@@ -685,6 +751,7 @@ console.log("going to update");
 			if( iLastPropertyId > iPreloadedProperties) {
 				// We check if the position in the array is bigger than the initial amount of properties
 				spawnNotification("Asking price is "+jData[i].iPrice, jData[i].sPreviewImage, "A new propertry has been added on "+jData[i].sAddress);
+				document.getElementById('notification').play();
 				// IF we have a new property, the title will flash with it's name
 				fnFlashTitle(jData[i].sAddress);
 			}
@@ -762,9 +829,17 @@ function fnShowMenu(){
 		/************************************************************************/
 		/************************************************************************/
 		/************************************************************************/
+
+
 // Create timer that updates properties
 // Only runs if the user is looking at the list
 // Stops when user clicks on something else
+
+$( document ).ready(function() {
+  fnCreatePropertyTimer();
+});
+
+
 function fnCreatePropertyTimer(){
 	fnGetProperties();
 	console.log(iLastPropertyId);
@@ -783,7 +858,7 @@ function fnStartUserTimeout(){
 	if (userView == "wdw-properties"){
 		console.log("called");
 		if(bTimerCheck == false ){
-			fnCreatePropertyTimer();
+
 			bTimerCheck = true;
 			clearInterval(window.timerUsers);
 		}
@@ -794,11 +869,11 @@ function fnStartUserTimeout(){
 
 	else if( userView =="wdw-users"){
 		fnCreateUserTimer();
-		clearInterval(window.timerProperties);
+
 	}
 
 	else {
-		clearInterval(window.timerProperties);
+
 		clearInterval(window.timerUsers);
 		bTimerCheck = false;
 
