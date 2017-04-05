@@ -11,7 +11,7 @@
 body{
 	width: 100vw;
 	height: 100vh;
-	overflow: hidden;
+	
 }
 
 .invalid{
@@ -60,7 +60,7 @@ body{
 	background-color: #F5F5F5;
 	bottom: 1px;
 	left: 1px;
-	
+
 }
 .wdw{
 	width: 100vw;
