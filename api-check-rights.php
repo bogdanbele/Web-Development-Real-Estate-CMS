@@ -1,12 +1,13 @@
 <?php
 session_start();
+error_reporting(E_ERROR);
 $serverResponse = [];
 
 
 // Divs we will depending on the access rights.
 $response = $_SESSION["accessrights"];
 
-
+$response = (isset($_SESSION['accessrights']) ? $_SESSION['accessrights'] : 0);
 
 if (!isset($_SESSION["accessrights"])) {
 $_SESSION["accessrights"] = 0;

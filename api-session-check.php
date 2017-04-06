@@ -4,8 +4,11 @@ $default ="test";
 $serverResponse = [];
 $message="";
 
+$accessrights = (isset($_SESSION['accessrights']) ? $_SESSION['accessrights'] : 0);
 
-
+if( $accessrights == null) {
+  $_SESSION["accessrights"] = 0;
+}
 
 if (!isset($_SESSION["accessrights"])) {
 $_SESSION["accessrights"] = 0;
@@ -14,7 +17,7 @@ $_SESSION["accessrights"] = 0;
 
 }
 
-// Divs we will depending on the access rights.
+// Divs we will be appending depending on the access rights.
 
 
 function loginButton(){
@@ -119,6 +122,8 @@ function echoFinal(){
   //at least I believe I do. The examples which I used for assignement 2 will still remain validated on the frontend because of
   // lack of time sadly. I do know how to use them in php to make it secure, but sadly I do not have the time :(.
   $message2 = json_decode('{}');
+
+  (isset($_SESSION['accessrights']) ? $_SESSION['accessrights'] : 0);
   $message2->rights= $_SESSION["accessrights"];
   
   global $serverResponse;

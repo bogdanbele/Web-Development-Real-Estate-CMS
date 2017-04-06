@@ -1,3 +1,8 @@
 [
-    
+    {
+        "sUniqueId": 100053,
+        "sUsername": "bogdan.bele@yahoo.com",
+        "sPassword": "dada",
+        "iAccesRights": 3
+    }
 ]
