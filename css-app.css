@@ -233,13 +233,14 @@ input{
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
-
+	overflow: hidden;
 	justify-content: space-around;
 	display: flex;
     background-color: #ECEFF1;
 }
 
 .propertiesRow{
+	overflow: hidden;
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
