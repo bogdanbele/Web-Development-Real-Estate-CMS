@@ -17,7 +17,6 @@ var iPreloadedProperties;
 var iLastUserId = 0;
 
 // Reminder of past clientside authentication
-// *DELETE*
 var iAccesRights = 0;
 
 // Boolean that checks if the menu is open or not
@@ -76,7 +75,6 @@ function initMap2(lat, lng, number) {
     };
 
     // Testing lat and long inside the function.
-    //console.log(lat, lng);
     var myLatlng = new google.maps.LatLng(lat, lng);
 
     var map = new google.maps.Map(document.getElementById('map' + number), {
@@ -141,10 +139,8 @@ function spawnNotification(theBody, theIcon, theTitle) {
 // We will track the amount of images we can upload through this var
 // tags : image upload, images, images-upload
 var iElementNumber = 0;
-
 $(document).on('change', '[type="file"]', function() {
     var preview = new FileReader();
-
     // We use readAsDataURL as a base64 encoded string
     preview.readAsDataURL(this.files[0]);
 
@@ -165,9 +161,9 @@ function fnCreateImageInput() {
     iElementNumber++;
     if (iElementNumber <= 5) {
         var sDiv = '<div class="image-column">\
-		<img class="img-preview" src=""></img>\
-		<input class="file" type="file" name="file-' + iElementNumber + '">\
-		</div>';
+        <img class="img-preview" src=""></img>\
+        <input class="file" type="file" name="file-' + iElementNumber + '">\
+        </div>';
         $(".image-holder").append(sDiv);
     }
 }
@@ -309,7 +305,6 @@ $("#frm-login").on('submit', function(e) {
         "processData": false,
         "cache": false
     }).done(function(data) {
-
         // We decode the (data) in order to transform it into a JSON object.
         var statusType = JSON.parse(data);
         if (statusType.status == "ok") {
@@ -325,14 +320,12 @@ $("#btn-save-user").click(function() {
 
 
     console.log("intialization");
-
     var oParent = $(this).parent();
     validator = 0;
     var aoChildren = oParent.children('input');
     for (var i = 0; i < aoChildren.length; i++) {
         var oInput = $(aoChildren[i]);
         oInput.removeClass('invalid');
-
         var sText = oInput.val();
         var iMin = oInput.attr('data-min');
         var iMax = oInput.attr('data-max');
@@ -340,8 +333,6 @@ $("#btn-save-user").click(function() {
             console.log("invalid");
             oInput.addClass('invalid');
         } else {}
-
-
     }
     validatedLoggin();
 });
@@ -436,25 +427,16 @@ function validatedLoggin() {
 /************************************************************************/
 
 $('[data-go-to="wdw-properties"]').click(function() {
-
-    /*	fnGetProperties();*/
+    /*  fnGetProperties();*/
     // I have removed this function because I impleted the userView which reads if the user
     // looks at the wdw-properties, so we no longer need to check the click
 });
 
 
 $(document).on("click", ".btn-delete-property", function() {
-
-
-
     var sIdToDelete = $(this).siblings(".lbl-property-id").text();
     var oTheParent = $(this).parent();
     var sUrl = "api-delete-property.php?id=" + sIdToDelete;
-
-
-
-
-
     swal({
             title: "Are you sure you want to delete this property?",
             type: "warning",
@@ -534,7 +516,46 @@ $(document).on("click", ".btn-promote-admin", function() {
 /************************************************************************/
 
 function fnCheckRights() {
+    $.ajax({
+        "url": "api-check-rights.php",
+        "method": "get",
+        "contentType": false,
+        "processData": false,
+        "cache": false
+    }).done(function(data) {
+        console.log(data);
+        var messageBackData = JSON.parse(data);
+        console.log(messageBackData[0].rights);
+        iAccesRights = messageBackData[0].rights;
 
+    });
+}
+
+function fnFirstWindow() {
+     $.ajax({
+        "url": "api-check-rights.php",
+        "method": "get",
+        "contentType": false,
+        "processData": false,
+        "cache": false
+    }).done(function(data) {
+        console.log(data);
+        var messageBackData = JSON.parse(data);
+        console.log(messageBackData[0].rights);
+        iAccesRights = messageBackData[0].rights;
+        if (iAccesRights >= 2) {
+        console.log("iAccesRights");
+        $("#wdw-login").hide();
+        $("#wdw-properties").css({
+            "display": "flex"
+        });
+    }
+    else{}
+
+
+    });
+console.log("iAccesRights");
+    
 }
 
 
@@ -553,6 +574,7 @@ function fnCheckLogin() {
         console.log(data);
         var messageBackData = JSON.parse(data);
         console.log(messageBackData[0].rights);
+        iAccesRights = messageBackData[0].rights;
 
     });
 
@@ -570,10 +592,7 @@ function fnCheckLogin() {
         // Enable the console log bellow to see the data we get ( the divs and their possition );
         //console.log(data);
         var messageBackData = JSON.parse(data);
-        console.log(messageBackData);
-        console.log(messageBackData.length);
         var jsonArray = messageBackData[1];
-
 
         for (var i = 0; i < messageBackData.length; i++) {
             console.log(i);
@@ -617,16 +636,16 @@ function fnGetUsers() {
         function fnUserLabelAdminCheck() {
             if (iAccesRights == 2) {
 
-                return '	<div class="lbl-user-password">{{password}}</div>\
-					<div data-go-to="wdw-sign-up" class="fa fa-edit fa-fw link fa-icon-center"></div>\
-					<div class="fa fa-trash fa-fw btn-delete-user fa-icon-center"></div>';
+                return '    <div class="lbl-user-password">{{password}}</div>\
+                    <div class="userDetails"><div data-go-to="wdw-sign-up" class="fa fa-edit link fa-icon-center"></div>\
+                    <div class="fa fa-trash btn-delete-user fa-icon-center"></div></div>';
             }
 
             if (iAccesRights == 3) {
 
-                return '	<div class="lbl-user-password">{{password}}</div>\
-					<div data-go-to="wdw-sign-up" class="fa fa-edit fa-fw link fa-icon-center"></div>\
-					<div class="fa fa-trash fa-fw btn-delete-user fa-icon-center"></div>';
+                return '    <div class="lbl-user-password">{{password}}</div>\
+                    <div class="userDetails"><div data-go-to="wdw-sign-up" class="fa fa-edit link fa-icon-center"></div>\
+                    <div class="fa fa-trash btn-delete-user fa-icon-center"></div>';
             } else {
                 return "";
             }
@@ -637,7 +656,7 @@ function fnGetUsers() {
             if (jData[index].iAccesRights == 1) {
                 return '<div class="fa fa-plus-circle fa-fw btn-promote-admin"></div>';
             } else {
-                return '<div class="fa-fw style="display:none" "></div>';
+                return '<div class="fa-fw style="display:none" "></div></div>';
             }
 
 
@@ -653,11 +672,11 @@ function fnGetUsers() {
         }
 
 
-        var sUser = '	<div class="lbl-property materialButton userButton {{span1}}">\
-			<div class="lbl-user-id">{{id}}</div>\
-			<div class="lbl-user-username">{{username}}</div>\
-			' + fnUserLabelAdminCheck() + '\
-			{{promote}}</div>';
+        var sUser = '   <div class="lbl-property materialButton userButton {{span1}}">\
+            <div class="lbl-user-id">{{id}}</div>\
+            <div class="lbl-user-username">{{username}}</div>\
+            ' + fnUserLabelAdminCheck() + '\
+            {{promote}}</div>';
 
         console.log(jData);
         for (var i = 0; i < jData.length; i++) {
@@ -698,11 +717,6 @@ function propertiesMapLoader() {
 
 function fnGetProperties() {
 
-
-
-
-    //	console.log("gettingProperties");
-    // display properties
     var sUrl = "api-get-properties.php?maxId=" + iLastPropertyId;
     $.getJSON(sUrl, function(jData) {
 
@@ -713,20 +727,21 @@ function fnGetProperties() {
 
         }
 
-        var sProperty = '	<div class="lbl-property materialButton">\
-		<div class="lbl-property-id">{{id}}</div>\
-		<div class="lbl-property-address">{{address}}</div>\
-		<div class="lbl-property-price">{{price}}</div>\
-		<div class="lbl-property-images">{{image}}</div>\
-		<div class="lbl-property-map-container"><div id="map{{i}}"></div></div>\
-		' + fnPropertyLabelAdminCheck() + '\
-		</div>';
+        var sProperty = '   <div class="lbl-property materialButton">\
+        ' + fnPropertyLabelAdminCheck() + '\
+        <div class="lbl-property-id">{{id}}</div>\
+        <div class="lbl-property-address">{{address}}</div>\
+        <div class="lbl-property-price">{{price}}</div>\
+        <div class="lbl-property-images">{{image}}</div>\
+        <div class="lbl-property-map-container"><div id="map{{i}}"></div></div>\
+                </div>';
 
         function fnPropertyLabelAdminCheck() {
             if (iAccesRights > 1) {
-                return '	<div data-go-to="wdw-create-property" class="fa fa-edit fa-fw link fa-icon-center"></div>\
-				<div class="fa fa-trash fa-fw btn-delete-property fa-icon-center"></div>';
+                return '    <div data-go-to="wdw-create-property" class="fa fa-edit fa-fw link fa-icon-center"></div>\
+                <div class="fa fa-trash fa-fw btn-delete-property fa-icon-center"></div>';
             } else {
+                console.log("else");
                 return "";
             }
         }
@@ -782,7 +797,7 @@ function fnGetProperties() {
             if (iLastPropertyId > iPreloadedProperties) {
                 // We check if the position in the array is bigger than the initial amount of properties
                 spawnNotification("Asking price is " + jData[i].iPrice, jData[i].sPreviewImage, "A new propertry has been added on " + jData[i].sAddress);
-                // document.getElementById('notification').play();
+                document.getElementById('notification').play();
                 console.log("playing sound");
                 // IF we have a new property, the title will flash with it's name
                 fnFlashTitle(jData[i].sAddress);
@@ -831,7 +846,7 @@ function logOut() {
 }
 
 function fnShowMenu() {
-    //	 animate the menu
+    //   animate the menu
     $("#menu").animate({
         "left": "0px"
     }, 400);
@@ -861,7 +876,7 @@ $(document).on('click', '.link', function() {
 });
 
 function fnHideMenu() {
-    //	 animate the menu
+    //   animate the menu
     $("#menu").animate({
         "left": "-250px"
     }, 400);
@@ -885,7 +900,10 @@ function fnHideMenu() {
 // Stops when user clicks on something else
 
 $(document).ready(function() {
+    fnCheckRights();
+    
     fnCreatePropertyTimer();
+    fnFirstWindow();
 });
 
 

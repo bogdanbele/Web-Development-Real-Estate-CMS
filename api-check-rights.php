@@ -4,13 +4,15 @@ $serverResponse = [];
 
 
 // Divs we will depending on the access rights.
-
-$response = 0;
-
+$response = $_SESSION["accessrights"];
 
 
-if(session_id() == '') {
-  $response = $_SESSION["accessrights"];
+
+if (!isset($_SESSION["accessrights"])) {
+$_SESSION["accessrights"] = 0;
+}else{
+
+
 }
 
 

@@ -86,6 +86,13 @@ input#txt-create-user-username {
 }
 
 .userButton{
-height: 10vh;
-width: 10vh;
+height: 7vh;
+width: 20vw;
+}
+
+.userDetails {
+	display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
 }

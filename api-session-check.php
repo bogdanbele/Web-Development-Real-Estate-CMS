@@ -106,13 +106,23 @@ function sendValues($finalDivs, $position){
 $message = json_decode('{}');
 $message->divsToAppend = $finalDivs;
 $message->position = $position;
+
 global $serverResponse;
 array_push($serverResponse, ($message));
 
 };
 
 function echoFinal(){
+
+  //We're adding the access rights to the array, in order to validate using the previously used Javascript frontened validation
+  //I'm doing this because I have already showed in this page that I have at least a baisc idea on how the sessions work, or
+  //at least I believe I do. The examples which I used for assignement 2 will still remain validated on the frontend because of
+  // lack of time sadly. I do know how to use them in php to make it secure, but sadly I do not have the time :(.
+  $message2 = json_decode('{}');
+  $message2->rights= $_SESSION["accessrights"];
+  
   global $serverResponse;
+  array_push($serverResponse, ($message2));
   echo json_encode($serverResponse);
 }
 
