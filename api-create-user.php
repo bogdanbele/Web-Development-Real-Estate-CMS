@@ -4,7 +4,6 @@ $sUsername = $_GET['username'];
 $sPassword = $_GET['password'];
 $sFileName = "data-users.txt";
 $sAccesRights = 1;
-
 $sajUsers = file_get_contents( $sFileName );
 $ajUsers = json_decode( $sajUsers );
 if( !is_array($ajUsers ) ){
@@ -15,14 +14,38 @@ if ($ajUsers==null){
 	$sAccesRights = 3;
 }
 
+for( $i = 0; $i < count($ajUsers) ; $i++ ){
+	if( $ajUsers[$i]->sUsername ==  $sUsername ){
+echo '{"status":"error"}';
+
+exit();
+  }
+  }
+
+
+	if (!filter_var($sUsername, FILTER_VALIDATE_EMAIL)) {
+
+	echo '{"status":"email"}';
+	exit();
+}
+
+
+
+
+
+
+
+
+
+
 // Creating a counter
 $sFileNameCounter = "data-counter.txt";
 
 // Reading from the file and setting the content to be equal to $sTextCounter
 $sTextCounter = file_get_contents( $sFileNameCounter );
 
-// We will be using ICount as a global variable that will change our id 
-$iCount = (int)$sTextCounter; 
+// We will be using ICount as a global variable that will change our id
+$iCount = (int)$sTextCounter;
 
 // Saving the value as Counter, since we need to increase the iCount in order to save it in the file.
 $iCounter = $iCount;
@@ -35,7 +58,7 @@ file_put_contents( $sFileNameCounter , $iCount );
 
 
 
-	$jUsers = json_decode('{}'); 
+	$jUsers = json_decode('{}');
 
 	// Adding the $iCounter to the uniqueId in order to have an increasinly bigger id.
 	$jUsers->sUniqueId = 100000 + $iCounter;

@@ -5,11 +5,29 @@ $serverResponse = [];
 $message="";
 
 
+
+
+if (!isset($_SESSION["accessrights"])) {
+$_SESSION["accessrights"] = 0;
+}else{
+
+
+}
+
 // Divs we will depending on the access rights.
 
 
 function loginButton(){
   $divsToAppend = "<div id='btnLoggin' class='menuHolder link' data-go-to='wdw-login'><div class='fa-marginMenu fa fa-user fa-fw '></div><p>Login</p></div>";
+  $position = "top";
+
+
+  sendValues($divsToAppend, $position);
+
+}
+
+function signUp(){
+  $divsToAppend = "<div id='signUp' class='menuHolder link' data-go-to='wdw-sign-up'><div class='fa-marginMenu fa fa-user fa-fw '></div><p>Sign up</p></div>";
   $position = "top";
 
 
@@ -27,6 +45,15 @@ function createProperty(){
 
 
 function logoutButton(){
+  $divsToAppend = "<div id='btnLogout' onclick='logOut()' class='menuHolder link' data-go-to='wdw-login'><div class='fa-marginMenu fa fa-home fa-fw '></div><p>Logout</p>";
+  $position = "bottom";
+
+
+  sendValues($divsToAppend, $position);
+
+}
+
+function addProperty(){
   $divsToAppend = "<div id='btnCreateProperty' class='menuHolder link' data-go-to='wdw-create-property'><div class='fa-marginMenu fa fa-home fa-fw '></div><p>Create Property</p>";
   $position = "bottom";
 
@@ -36,21 +63,35 @@ function logoutButton(){
 }
 
 
-
 if ( $_SESSION["accessrights"] == 3 ){
   // We asign a value to the message we're sending back and putting it into a JSON object
   // We set the message value equal to the divs we want to append
-createProperty();
-logoutButton();
-echoFinal();
+  addProperty();
+  createProperty();
+  logoutButton();
+  signUp();
+  echoFinal();
   }
 
 else if( $_SESSION["accessrights"] == 2 ){
   createProperty();
-    echoFinal();
+  logoutButton();
+  addProperty();
+  echoFinal();
   }
+
+  else if( $_SESSION["accessrights"] == 1 ){
+  createProperty();
+  logoutButton();
+  echoFinal();
+  }
+
+
+
 else {
-  echo '{"divsToAppend":"'.$divsToAppend.'"}';
+  signUp();
+loginButton();
+echoFinal();
 }
 
 

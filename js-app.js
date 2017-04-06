@@ -1,5 +1,3 @@
-
-
 // We wll use sUserView to keep track of the user's position
 var sUserView = "defaultWindow";
 
@@ -16,7 +14,7 @@ var iPreloadedProperties;
 // to GET the maximum amount of elements. Unlike properties, we don't
 // need a iPreloadedUsers because we do not send notiffications
 // each time a new user signs ups
-var iLastUserId=0;
+var iLastUserId = 0;
 
 // Reminder of past clientside authentication
 // *DELETE*
@@ -35,60 +33,66 @@ var validator = 0;
 /************************************************************************/
 /************************************************************************/
 /************************************************************************/
-$("#previewMap").click(function(){
-	var sLatitude = $("#txt-lat").val();
-	var sLong  = $("#txt-lon").val();
-	console.log(sLatitude);
-	console.log(sLong);
-	sLatitude = parseFloat(sLatitude);
-	sLong = parseFloat(sLong);
-	initMap(sLatitude, sLong);
+$("#previewMap").click(function() {
+    var sLatitude = $("#txt-lat").val();
+    var sLong = $("#txt-lon").val();
+    console.log(sLatitude);
+    console.log(sLong);
+    sLatitude = parseFloat(sLatitude);
+    sLong = parseFloat(sLong);
+    initMap(sLatitude, sLong);
 });
 
 
 function initMap(lat, lng) {
 
-	var iLat = lat;
-	var iLng = lng;
-	  var myLatLng = {lat: iLat, lng: iLng};
+    var iLat = lat;
+    var iLng = lng;
+    var myLatLng = {
+        lat: iLat,
+        lng: iLng
+    };
 
-	  var map = new google.maps.Map(document.getElementById('map'), {
-	    zoom: 6,
-	    center: myLatLng
-	  });
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 6,
+        center: myLatLng
+    });
 
-	  var marker = new google.maps.Marker({
-	    position: myLatLng,
-	    map: map,
-	    title: 'Hello World!'
-	  });
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!'
+    });
 }
 
 
-function initMap2(lat, lng ,number) {
+function initMap2(lat, lng, number) {
 
-	var iLat = lat;
-	var iLng = lng;
-	var myLatLng = {lat: iLat, lng: iLng};
+    var iLat = lat;
+    var iLng = lng;
+    var myLatLng = {
+        lat: iLat,
+        lng: iLng
+    };
 
-	// Testing lat and long inside the function.
-	//console.log(lat, lng);
-	var myLatlng = new google.maps.LatLng(lat,lng);
+    // Testing lat and long inside the function.
+    //console.log(lat, lng);
+    var myLatlng = new google.maps.LatLng(lat, lng);
 
-	var map = new google.maps.Map(document.getElementById('map'+number), {
-		zoom: 12,
-		center: myLatlng
-	});
+    var map = new google.maps.Map(document.getElementById('map' + number), {
+        zoom: 12,
+        center: myLatlng
+    });
 
-	google.maps.event.addListener(map,'idle',function(event) {
-	map.setCenter(myLatlng); //force to set original center position
-});
+    google.maps.event.addListener(map, 'idle', function(event) {
+        map.setCenter(myLatlng); //force to set original center position
+    });
 
-	  var marker = new google.maps.Marker({
-	    position: myLatLng,
-	    map: map,
-	    title: 'Hello World!'
-	  });
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!'
+    });
 }
 
 /************************************************************************/
@@ -97,19 +101,19 @@ function initMap2(lat, lng ,number) {
 
 
 // Title flashing which shows only the name ( restricted by space in the tittle bar)
-function fnFlashTitle(property){
+function fnFlashTitle(property) {
 
-	// the interval will change the title every 1 second for as long
-	// as you're not focusing the window
-	var flashTimer = setInterval(function(){
-		var title = document.title;
-		var propertyMessage =  "New Property : "+ property ;
-		document.title = (title == propertyMessage ? oldTitle : propertyMessage);
-	}, 1000);
-	window.onfocus=function() {
-		document.title = oldTitle;
-		clearInterval(flashTimer);
-	}
+    // the interval will change the title every 1 second for as long
+    // as you're not focusing the window
+    var flashTimer = setInterval(function() {
+        var title = document.title;
+        var propertyMessage = "New Property : " + property;
+        document.title = (title == propertyMessage ? oldTitle : propertyMessage);
+    }, 1000);
+    window.onfocus = function() {
+        document.title = oldTitle;
+        clearInterval(flashTimer);
+    }
 }
 
 /************************************************************************/
@@ -117,17 +121,17 @@ function fnFlashTitle(property){
 /************************************************************************/
 
 Notification.requestPermission().then(function(result) {
-	console.log(result);
+    console.log(result);
 });
 
 // Template for the Notification, which we will only have to fill with
 // parameters
-function spawnNotification(theBody,theIcon,theTitle) {
-	var options = {
-		body: theBody,
-		icon: "images/"+theIcon
-	}
-	var n = new Notification(theTitle,options);
+function spawnNotification(theBody, theIcon, theTitle) {
+    var options = {
+        body: theBody,
+        icon: "images/" + theIcon
+    }
+    var n = new Notification(theTitle, options);
 }
 
 /************************************************************************/
@@ -138,114 +142,114 @@ function spawnNotification(theBody,theIcon,theTitle) {
 // tags : image upload, images, images-upload
 var iElementNumber = 0;
 
-$(document).on('change' , '[type="file"]' , function(){
-	var preview = new FileReader();
+$(document).on('change', '[type="file"]', function() {
+    var preview = new FileReader();
 
-	// We use readAsDataURL as a base64 encoded string
-	preview.readAsDataURL( this.files[0] );
+    // We use readAsDataURL as a base64 encoded string
+    preview.readAsDataURL(this.files[0]);
 
-	// We asign self = this because we will want to use the "this" of this
-	// scope inside a funciton nested inside, so we will not be able to refference
-	// it via "this"
-	var self = this;
-	preview.onload = function(event){
-		$(self).siblings(".img-preview").attr("src", event.target.result);
-	}
-	if( $(self).siblings(".img-preview").attr("src") == ""  ){
-		fnCreateImageInput();
-	}
-	else {}
+    // We asign self = this because we will want to use the "this" of this
+    // scope inside a funciton nested inside, so we will not be able to refference
+    // it via "this"
+    var self = this;
+    preview.onload = function(event) {
+        $(self).siblings(".img-preview").attr("src", event.target.result);
+    }
+    if ($(self).siblings(".img-preview").attr("src") == "") {
+        fnCreateImageInput();
+    } else {}
 });
 
 // The max amount you can upload is 6 images0
-function fnCreateImageInput(){
-	iElementNumber++;
-	if (iElementNumber <= 5) {
-		var sDiv = '<div class="image-column">\
+function fnCreateImageInput() {
+    iElementNumber++;
+    if (iElementNumber <= 5) {
+        var sDiv = '<div class="image-column">\
 		<img class="img-preview" src=""></img>\
-		<input class="file" type="file" name="file-'+iElementNumber+'">\
+		<input class="file" type="file" name="file-' + iElementNumber + '">\
 		</div>';
-		$(".image-holder").append(sDiv);
-	}
+        $(".image-holder").append(sDiv);
+    }
 }
 
 //The two submitting functions for the forms
-$("#saveProperty").click(function(){
-	console.log("button clicked");
-	$("#frm-property").submit();
+$("#saveProperty").click(function() {
+    console.log("button clicked");
+    $("#frm-property").submit();
 });
 
-$("#tryLoggin").click(function(){
-	console.log("button clicked");
-	$("#frm-login").submit();
+$("#tryLoggin").click(function() {
+    console.log("button clicked");
+    $("#frm-login").submit();
 });
 
-$("#frm-property").on('submit', function(e){
-	e.preventDefault();
-	var sPropertyId = $("#txt-create-property-id").val();
-	var sPropertyAddress = 	$("#txt-create-property-address").val();
-	console.log("property id = " +sPropertyId);
-	// We check if the sPropertyId is empty or not.
-	// if var sPropertyId = $("#txt-create-property-id").val(); equal to an empty string
-	// it means we will go to the CREATE property ajax call otherwise to the EDIT
-	if (sPropertyId !== "" ) {
-		$.ajax({
-			"url":"api-update-property.php",
-			"method":"post",
-			"data": new FormData(this),
-			"contentType":false,
-			"processData":false,
-			"cache":false
-		});
-	}
-	else {
-		swal("Property created !", sPropertyAddress+" has been created!", "success");
-		$.ajax({
-			"url":"api-create-property.php",
-			"method":"post",
-			"data": new FormData(this),
-			"contentType":false,
-			"processData":false,
-			"cache":false
-		});
-	}
-	// select the create property div for the id
-	console.log("property id = "+sPropertyId + " address = " + sPropertyAddress);
+$("#frm-property").on('submit', function(e) {
+    e.preventDefault();
+    var sPropertyId = $("#txt-create-property-id").val();
+    var sPropertyAddress = $("#txt-create-property-address").val();
+    console.log("property id = " + sPropertyId);
+    // We check if the sPropertyId is empty or not.
+    // if var sPropertyId = $("#txt-create-property-id").val(); equal to an empty string
+    // it means we will go to the CREATE property ajax call otherwise to the EDIT
+    if (sPropertyId !== "") {
+        $.ajax({
+            "url": "api-update-property.php",
+            "method": "post",
+            "data": new FormData(this),
+            "contentType": false,
+            "processData": false,
+            "cache": false
+        });
+    } else {
+        swal("Property created !", sPropertyAddress + " has been created!", "success");
+        $.ajax({
+            "url": "api-create-property.php",
+            "method": "post",
+            "data": new FormData(this),
+            "contentType": false,
+            "processData": false,
+            "cache": false
+        });
+    }
+    // select the create property div for the id
+    console.log("property id = " + sPropertyId + " address = " + sPropertyAddress);
 });
 
 
 /************************************************************************/
 /************************************************************************/
 /************************************************************************/
-$(document).on("click",".link", function(){
-	$(".wdw").hide();
-	var sWindowToShow = $(this).attr("data-go-to");
-	$("#"+sWindowToShow).css( {"display":"flex"} );
-	// getting values from the sibling
-	var sPropertyIdToEdit = $(this).siblings(".lbl-property-id").text();
-	var sPropertyAddressToEdit = $(this).siblings(".lbl-property-address").text();
-	var sPropertyPriceToEdit = $(this).siblings(".lbl-property-price").text();
-	// select the create property div for the id
-	$("#txt-create-property-id").val( sPropertyIdToEdit );
-	$("#txt-create-property-address").val( sPropertyAddressToEdit );
-	$("#txt-create-property-price").val( sPropertyPriceToEdit );
-	var sUserIdToEdit = $(this).siblings(".lbl-user-id").text();
-	var sUsernameToEdit = $(this).siblings(".lbl-user-username").text();
-	var sPasswordToEdit = $(this).siblings(".lbl-user-password").text();
-	$("#txt-create-user-id").val( sUserIdToEdit );
-	$("#txt-create-user-username").val( sUsernameToEdit );
-	$("#txt-create-user-password").val( sPasswordToEdit );
-	userView = sWindowToShow;
-	fnStartUserTimeout();
+$(document).on("click", ".link", function() {
+    $(".wdw").hide();
+    var sWindowToShow = $(this).attr("data-go-to");
+    $("#" + sWindowToShow).css({
+        "display": "flex"
+    });
+    // getting values from the sibling
+    var sPropertyIdToEdit = $(this).siblings(".lbl-property-id").text();
+    var sPropertyAddressToEdit = $(this).siblings(".lbl-property-address").text();
+    var sPropertyPriceToEdit = $(this).siblings(".lbl-property-price").text();
+    // select the create property div for the id
+    $("#txt-create-property-id").val(sPropertyIdToEdit);
+    $("#txt-create-property-address").val(sPropertyAddressToEdit);
+    $("#txt-create-property-price").val(sPropertyPriceToEdit);
+    var sUserIdToEdit = $(this).siblings(".lbl-user-id").text();
+    var sUsernameToEdit = $(this).siblings(".lbl-user-username").text();
+    var sPasswordToEdit = $(this).siblings(".lbl-user-password").text();
+    $("#txt-create-user-id").val(sUserIdToEdit);
+    $("#txt-create-user-username").val(sUsernameToEdit);
+    $("#txt-create-user-password").val(sPasswordToEdit);
+    userView = sWindowToShow;
+    fnStartUserTimeout();
 });
 
 // Right click mouse function
 // Taggs so you can find while searching :
 // rightClick right-click
-$(".wdw").contextmenu(function(event){
-	fnCheckLogin();
-	fnShowMenu();
-	event.preventDefault();
+$(".wdw").contextmenu(function(event) {
+    fnCheckLogin();
+    fnShowMenu();
+    event.preventDefault();
 });
 
 
@@ -256,35 +260,37 @@ $(".wdw").contextmenu(function(event){
 //succesfull and unsucessfull function are put here and not inside the
 // the main loggin function, if we simply call them in the loggin main function
 // we will have a more readable syntax
-function successfulLoggin(){
-	swal({
-		title: "You have logged in",
-		type: "success",
-		confirmButtonColor: "#64DD17",
-		confirmButtonText: "Continue",
-		closeOnConfirm: true
-	},
-	function(){
-		// Because we do not want to hide the divs containing the wdw class
-		// we only call this function on success. There is no need to hide the
-		// wdw and display wdw-properties if the attempt is unsucessfull
-		$(".wdw").hide();
-		$("#wdw-properties").css( {"display":"flex"} );
-		userView = "wdw-properties";
-		fnStartUserTimeout();
+function successfulLoggin() {
+    swal({
+            title: "You have logged in",
+            type: "success",
+            confirmButtonColor: "#64DD17",
+            confirmButtonText: "Continue",
+            closeOnConfirm: true
+        },
+        function() {
+            // Because we do not want to hide the divs containing the wdw class
+            // we only call this function on success. There is no need to hide the
+            // wdw and display wdw-properties if the attempt is unsucessfull
+            $(".wdw").hide();
+            $("#wdw-properties").css({
+                "display": "flex"
+            });
+            userView = "wdw-properties";
+            fnStartUserTimeout();
 
-	});
+        });
 }
 
-function unsucessfulLoggin(){
-	swal({
-		title: "Incorrect loggin",
-		type: "error",
-		confirmButtonColor: "#64DD17",
-		confirmButtonText: "Try again",
-		closeOnConfirm: true,
-		showCancelButton: false
-	})
+function unsucessfulLoggin() {
+    swal({
+        title: "Incorrect loggin",
+        type: "error",
+        confirmButtonColor: "#f44336",
+        confirmButtonText: "Try again",
+        closeOnConfirm: true,
+        showCancelButton: false
+    })
 };
 
 // Ajax call when we want to log in. The POST method will send the data
@@ -293,565 +299,502 @@ function unsucessfulLoggin(){
 // the actual response we're getting from PHP with function(data).
 // The data inside this functions are actually the -echo-s from php
 // which change depending if we inserted a correct username or not.
-$("#frm-login").on('submit', function(e){
-	e.preventDefault();
-		$.ajax({
-			"url":"api-login.php",
-			"method":"post",
-			"data": new FormData(this),
-			"contentType":false,
-			"processData":false,
-			"cache":false
-		}).done(function(data){
+$("#frm-login").on('submit', function(e) {
+    e.preventDefault();
+    $.ajax({
+        "url": "api-login.php",
+        "method": "post",
+        "data": new FormData(this),
+        "contentType": false,
+        "processData": false,
+        "cache": false
+    }).done(function(data) {
 
-			// We decode the (data) in order to transform it into a JSON object.
-			var statusType = JSON.parse(data);
-			if (statusType.status == "ok"){
-				successfulLoggin();
-			}
-			else {
-				unsucessfulLoggin();
-			}
+        // We decode the (data) in order to transform it into a JSON object.
+        var statusType = JSON.parse(data);
+        if (statusType.status == "ok") {
+            successfulLoggin();
+        } else {
+            unsucessfulLoggin();
+        }
 
-		});
+    });
 });
 
-$("#btn-save-user").click(function(){
-
-	var sId = $("#txt-create-user-id").val();
-	var sUsername = $("#txt-create-user-username").val();
-	var sPassword = $("#txt-create-user-password").val();
-	console.log("intialization");
-
-			var oParent = $(this).parent();
-			validator = 0;
-			var aoChildren = oParent.children('input');
-			for( var i = 0; i < aoChildren.length; i++ ){
-				var oInput = $( aoChildren[i] );
-				oInput.removeClass('invalid');
-
-				var sText = oInput.val();
-				var iMin = oInput.attr('data-min');
-				var iMax = oInput.attr('data-max');
-				if( sText.length < iMin || sText.length > iMax ){
-					console.log("invalid");
-					oInput.addClass('invalid');
-				}
-				else {
-
-					validator++;
-					if (validator ==  aoChildren.length ) {
-						validatedLoggin();
-
-					}
-					else {
-						swal({
-							title:  "Failed to sign up.",
-							text: "Your username and password must be between 3 and 15 characters.",
-							type: "error"
-						});
-					}
+$("#btn-save-user").click(function() {
 
 
-				}
+    console.log("intialization");
+
+    var oParent = $(this).parent();
+    validator = 0;
+    var aoChildren = oParent.children('input');
+    for (var i = 0; i < aoChildren.length; i++) {
+        var oInput = $(aoChildren[i]);
+        oInput.removeClass('invalid');
+
+        var sText = oInput.val();
+        var iMin = oInput.attr('data-min');
+        var iMax = oInput.attr('data-max');
+        if (sText.length < iMin || sText.length > iMax) {
+            console.log("invalid");
+            oInput.addClass('invalid');
+        } else {}
 
 
-			}
-
-
-function validatedLoggin(){
-
-		if( sId ){
-			var sUrl = "api-update-user.php?id="+sId+"&username="+sUsername+"&password="+sPassword;
-			iLastUserId = 0;
-	console.log("intialization");
-			swal({
-				title:  sUsername + " has been updated",
-				text: "Password = " + sPassword,
-				type: "success",
-				showCancelButton: true,
-				confirmButtonColor: "#64DD17",
-				confirmButtonText: "Go back to the user list",
-				cancelButtonText: "Continue editting",
-				closeOnConfirm: true
-			},
-			function(){
-				$(".wdw").hide();
-				$("#wdw-users").css( {"display":"flex"} );
-				userView = "wdw-users";
-				fnStartUserTimeout();
-	console.log("going to update");
-			});
+    }
+    validatedLoggin();
+});
 
 
 
+function validatedLoggin() {
+
+    var sId = $("#txt-create-user-id").val();
+    var sUsername = $("#txt-create-user-username").val();
+    var sPassword = $("#txt-create-user-password").val();
+    if (sId) {
+        var sUrl = "api-update-user.php?id=" + sId + "&username=" + sUsername + "&password=" + sPassword;
+        iLastUserId = 0;
+        console.log("intialization");
+        swal({
+                title: sUsername + " has been updated",
+                text: "Password = " + sPassword,
+                type: "success",
+                showCancelButton: true,
+                confirmButtonColor: "#64DD17",
+                confirmButtonText: "Go back to the user list",
+                cancelButtonText: "Continue editting",
+                closeOnConfirm: true
+            },
+            function() {
+                $(".wdw").hide();
+                $("#wdw-users").css({
+                    "display": "flex"
+                });
+                userView = "wdw-users";
+                fnStartUserTimeout();
+                console.log("going to update");
+            });
+        $("#userBody").empty();
+    } else {
+        var sUrl = "api-create-user.php?username=" + sUsername + "&password=" + sPassword;
+        console.log("got to surl");
+        $.getJSON(sUrl, function(jData) {
+
+            if (jData.status == "ok") {
+                swal({
+                        title: sUsername + " has been createdx",
+                        text: "Password = " + sPassword,
+                        type: "success",
+                        showCancelButton: false,
+                        confirmButtonColor: "#64DD17",
+                        confirmButtonText: "Go to the user list",
+                        closeOnConfirm: true
+                    },
+                    function() {
+                        $(".wdw").hide();
+                        $("#wdw-users").css({
+                            "display": "flex"
+                        });
+                        userView = "wdw-users";
+                        fnStartUserTimeout();
+                        console.log("going to update");
+                    });
+            } else if (jData.status == "error") {
+                swal({
+                    title: "Error Singing up.",
+                    text: "Username already exists.",
+                    type: "error",
+                    showCancelButton: false,
+                    confirmButtonColor: "#f44336",
+                    confirmButtonText: "Retry",
+                    closeOnConfirm: true
+                });
+            } else if (jData.status == "email") {
+                swal({
+                    title: " Error Signing up.",
+                    text: "Invalid Email.",
+                    type: "error",
+                    showCancelButton: false,
+                    confirmButtonColor: "#f44336",
+                    confirmButtonText: "Retry",
+                    closeOnConfirm: true
+                });
+            }
 
 
-
-			$("#userBody").empty();
-
-
-		}else{
-
-
-			var sUrl = "api-create-user.php?username="+sUsername+"&password="+sPassword;
-			swal("User create !", sPassword+" is the current password!", "success");
-
-			swal({
-				title:  sUsername + " has been created",
-				text: "Password = " + sPassword,
-				type: "success",
-				showCancelButton: false,
-				confirmButtonColor: "#64DD17",
-				confirmButtonText: "Go to the user list",
-				closeOnConfirm: true
-			},
-			function(){
-				$(".wdw").hide();
-				$("#wdw-users").css( {"display":"flex"} );
-				userView = "wdw-users";
-				fnStartUserTimeout();
-		console.log("going to update");
-			});
-
-
-
-
-
-
-				$.getJSON( sUrl, function( jData){
-					if( jData.status == "ok" ){
-					}
-		});
-	}
+        });
+    }
 }
 
+
+
+
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
+
+$('[data-go-to="wdw-properties"]').click(function() {
+
+    /*	fnGetProperties();*/
+    // I have removed this function because I impleted the userView which reads if the user
+    // looks at the wdw-properties, so we no longer need to check the click
 });
 
 
-	/************************************************************************/
-	/************************************************************************/
-	/************************************************************************/
+$(document).on("click", ".btn-delete-property", function() {
 
-	$('[data-go-to="wdw-properties"]').click(function(){
 
-		/*	fnGetProperties();*/
-// I have removed this function because I impleted the userView which reads if the user
-// looks at the wdw-properties, so we no longer need to check the click
+
+    var sIdToDelete = $(this).siblings(".lbl-property-id").text();
+    var oTheParent = $(this).parent();
+    var sUrl = "api-delete-property.php?id=" + sIdToDelete;
+
+
+
+
+
+    swal({
+            title: "Are you sure you want to delete this property?",
+            type: "warning",
+            confirmButtonColor: "#64DD17",
+            confirmButtonText: "Continue",
+            closeOnConfirm: true,
+            showCancelButton: true
+        },
+        function() {
+            $.getJSON(sUrl, function(jData) {
+                if (jData.status == "ok") {
+                    oTheParent.remove();
+                }
+            });
+
+        });
+
+
+
 });
 
 
-	$(document).on("click" ,".btn-delete-property" , function(){
+$(document).on("click", ".btn-delete-user", function() {
 
 
+    var sIdToDelete = $(this).siblings(".lbl-user-id").text();
+    var oTheParent = $(this).parent();
+    var sUrl = "api-delete-user.php?id=" + sIdToDelete;
 
-		var sIdToDelete = $(this).siblings(".lbl-property-id").text();
-		var oTheParent = $(this).parent();
-		var sUrl = "api-delete-property.php?id="+sIdToDelete;
+    swal({
+            title: "Are you sure you want to delete this user?",
+            type: "warning",
+            confirmButtonColor: "#64DD17",
+            confirmButtonText: "Continue",
+            closeOnConfirm: true,
+            showCancelButton: true
+        },
+        function() {
+            $.getJSON(sUrl, function(jData) {
+                if (jData.status == "ok") {
+                    oTheParent.remove();
+                }
+            });
 
 
+        });
 
 
 
-		swal({
-			title: "Are you sure you want to delete this property?",
-			type: "warning",
-			confirmButtonColor: "#64DD17",
-			confirmButtonText: "Continue",
-			closeOnConfirm: true,
-			showCancelButton: true
-		},
-		function(){
-			$.getJSON( sUrl, function( jData){
-				if( jData.status == "ok" ){
-					oTheParent.remove();
-				}
-			});
+});
 
-		});
+/************************************/
 
+$(document).on("click", ".btn-promote-admin", function() {
 
 
-	});
 
+    var sIdToDelete = $(this).siblings(".lbl-user-id").text();
+    var oTheParent = $(this).parent();
+    var localThis = $(this);
+    var sUrl = "api-promote-user.php?id=" + sIdToDelete;
 
-	$(document).on("click" ,".btn-delete-user" , function(){
+    $.getJSON(sUrl, function(jData) {
+        if (jData.status == "ok") {
 
+            localThis.css({
+                "opacity": "0"
+            });
+            oTheParent.addClass("admin-user");
+        }
+    });
+});
 
-		var sIdToDelete = $(this).siblings(".lbl-user-id").text();
-		var oTheParent = $(this).parent();
-		var sUrl = "api-delete-user.php?id="+sIdToDelete;
 
-		swal({
-			title: "Are you sure you want to delete this user?",
-			type: "warning",
-			confirmButtonColor: "#64DD17",
-			confirmButtonText: "Continue",
-			closeOnConfirm: true,
-			showCancelButton: true
-		},
-		function(){
-			$.getJSON( sUrl, function( jData){
-				if( jData.status == "ok" ){
-					oTheParent.remove();
-				}
-			});
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
 
+function fnCheckRights() {
 
-		});
+}
 
 
 
-	});
 
-	/************************************/
+function fnCheckLogin() {
 
-	$(document).on("click" ,".btn-promote-admin" , function(){
 
+    $.ajax({
+        "url": "api-check-rights.php",
+        "method": "get",
+        "contentType": false,
+        "processData": false,
+        "cache": false
+    }).done(function(data) {
+        console.log(data);
+        var messageBackData = JSON.parse(data);
+        console.log(messageBackData[0].rights);
 
+    });
 
-		var sIdToDelete = $(this).siblings(".lbl-user-id").text();
-		var oTheParent = $(this).parent();
-		var localThis = $(this);
-		var sUrl = "api-promote-user.php?id="+sIdToDelete;
+    $.ajax({
+        "url": "api-session-check.php",
+        "method": "get",
+        "contentType": false,
+        "processData": false,
+        "cache": false
+    }).done(function(data) {
+        $("#upperMenu").empty();
+        $("#lowerMenu").empty();
+        console.log(data);
+        // We decode the (data) in order to transform it into a JSON object.
+        // Enable the console log bellow to see the data we get ( the divs and their possition );
+        //console.log(data);
+        var messageBackData = JSON.parse(data);
+        console.log(messageBackData);
+        console.log(messageBackData.length);
+        var jsonArray = messageBackData[1];
 
-		$.getJSON( sUrl, function( jData){
-			if( jData.status == "ok" ){
 
-				localThis.css( {"opacity":"0"} );
-				oTheParent.addClass("admin-user");
-			}
-		});
-	});
+        for (var i = 0; i < messageBackData.length; i++) {
+            console.log(i);
+            var obj = messageBackData[i];
+            var possition = messageBackData[i].position;
+            //console.log(messageBackData[i].position);
+            if (obj.position == "top") {
+                //console.log("TOP");
+                //console.log(messageBackData[i].divsToAppend);
+                $("#upperMenu").append(messageBackData[i].divsToAppend);
 
+            } else if (obj.position == "bottom") {
+                //console.log(messageBackData[i].divsToAppend);
+                $("#lowerMenu").prepend(messageBackData[i].divsToAppend);
+            }
 
-	/************************************************************************/
-	/************************************************************************/
-	/************************************************************************/
+        };
 
 
-	function fnCheckLogin(){
 
 
 
 
-		$.ajax({
-			"url":"api-session-check.php",
-			"method":"get",
-			"contentType":false,
-			"processData":false,
-			"cache":false
-		}).done(function(data){
-			$( "#upperMenu" ).empty();
-			$("#lowerMenu").empty();
-	console.log("PARSING");
-				// We decode the (data) in order to transform it into a JSON object.
-				// Enable the console log bellow to see the data we get ( the divs and their possition );
-				//console.log(data);
-				var messageBackData = JSON.parse(data);
-				console.log(messageBackData);
-				console.log(messageBackData.length);
-				var jsonArray = messageBackData[1];
+    });
+}
 
+function fnAdminCheck() {
 
-				for(var i = 0; i < messageBackData.length; i++) {
-					console.log(i);
-	    		var obj = messageBackData[i];
-					var possition = messageBackData[i].position;
-					//console.log(messageBackData[i].position);
-					if(obj.position == "top"){
-						//console.log("TOP");
-						//console.log(messageBackData[i].divsToAppend);
-						$("#upperMenu").append(messageBackData[i].divsToAppend);
+}
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
+function fnGetUsers() {
+    var sUrl = "api-get-users.php?maxId=" + iLastUserId;
+    console.log("get users");
+    $.getJSON(sUrl, function(jData) {
 
-					}
-					else if (obj.position == "bottom" ){
-						//console.log(messageBackData[i].divsToAppend);
-						$("#lowerMenu").prepend(messageBackData[i].divsToAppend);
-					}
 
-};
 
 
+        function fnUserLabelAdminCheck() {
+            if (iAccesRights == 2) {
 
-
-
-
-		});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-		if ( iAccesRights == 0 ){
-			var btnLoggin = 	'<div id="btnLoggin" class="menuHolder link" data-go-to="wdw-login">\
-			<div class="fa-marginMenu fa fa-user fa-fw "></div>\
-			<p>Log in</p>\
-			</div>'
-
-			if( $('#btnLoggin').length == 0 ){
-				$("#upperMenu").prepend(btnLoggin);
-			}
-
-		}
-		if ( iAccesRights == 1 ){
-			$("#btnLoggin").remove();
-
-		}
-		if (iAccesRights >= 1 ){
-
-			$("#btnLoggin").remove();
-			$("#btnSignup").remove();
-
-			if( $('#lbl-userAndProperties').length == 0){
-				var userAndPropertyLists =	'<div id="lbl-userAndProperties" class="menuHolder link"  data-go-to="wdw-properties">\
-				<div class="fa-marginMenu fa fa-list fa-fw "></div>\
-				<p>Property List</p>\
-				</div>\
-				<div class="menuHolder link" data-go-to="wdw-users"">\
-				<div class="fa-marginMenu fa fa-user fa-fw "></div>\
-				<p>User List</p>\
-				</div>';
-				$("#upperMenu").prepend(userAndPropertyLists);
-			}
-		}
-
-		if ( iAccesRights >= 2){
-
-
-
-			var btnCreateProperty = '	<div id="btnCreateProperty" class="menuHolder link" data-go-to="wdw-create-property">\
-			<div class="fa-marginMenu fa fa-home fa-fw "></div>\
-			<p>Create Property</p>\
-			</div>';
-
-			if( $('#btnCreateProperty').length == 0){
-				$("#lowerMenu").prepend(btnCreateProperty);
-			}
-
-		}
-		*/
-	}
-
-	function fnAdminCheck(){
-
-	}
-	/************************************************************************/
-	/************************************************************************/
-	/************************************************************************/
-	function fnGetUsers(){
-		var sUrl = "api-get-users.php?maxId="+iLastUserId;
-		console.log("get users");
-		$.getJSON( sUrl , function( jData ){
-
-
-
-
-			function fnUserLabelAdminCheck(){
-				if( iAccesRights == 2 ){
-
-					return '	<div class="lbl-user-password">{{password}}</div>\
+                return '	<div class="lbl-user-password">{{password}}</div>\
 					<div data-go-to="wdw-sign-up" class="fa fa-edit fa-fw link fa-icon-center"></div>\
 					<div class="fa fa-trash fa-fw btn-delete-user fa-icon-center"></div>';
-				}
+            }
 
-				if ( iAccesRights == 3) {
+            if (iAccesRights == 3) {
 
-					return '	<div class="lbl-user-password">{{password}}</div>\
+                return '	<div class="lbl-user-password">{{password}}</div>\
 					<div data-go-to="wdw-sign-up" class="fa fa-edit fa-fw link fa-icon-center"></div>\
 					<div class="fa fa-trash fa-fw btn-delete-user fa-icon-center"></div>';
-				}
-				else{
-					return "";
-				}
-			}
+            } else {
+                return "";
+            }
+        }
 
-			function fnCheckPromote(index){
+        function fnCheckPromote(index) {
 
-				if( jData[index].iAccesRights == 1   ){
-					return '<div class="fa fa-plus-circle fa-fw btn-promote-admin"></div>';
-				}
-				else{
-					return '<div class="fa-fw style="display:none" "></div>' ;
-				}
+            if (jData[index].iAccesRights == 1) {
+                return '<div class="fa fa-plus-circle fa-fw btn-promote-admin"></div>';
+            } else {
+                return '<div class="fa-fw style="display:none" "></div>';
+            }
 
 
-			}
+        }
 
-			function fnCheckAdmin(index){
+        function fnCheckAdmin(index) {
 
-				if( jData[index].iAccesRights > 1   ){
-					return "admin-user";
-				}
-				else {
-					return "";
-				}
-			}
+            if (jData[index].iAccesRights > 1) {
+                return "admin-user";
+            } else {
+                return "";
+            }
+        }
 
 
-			var sUser = '	<div class="lbl-property materialButton {{span1}}">\
+        var sUser = '	<div class="lbl-property materialButton userButton {{span1}}">\
 			<div class="lbl-user-id">{{id}}</div>\
 			<div class="lbl-user-username">{{username}}</div>\
-			'+fnUserLabelAdminCheck()+'\
+			' + fnUserLabelAdminCheck() + '\
 			{{promote}}</div>';
 
-			console.log(jData);
-			for( var i = 0 ; i < jData.length ; i++ ){
-				console.log("div");
-				var sUserTemplate = sUser;
-				sUserTemplate = sUserTemplate.replace( "{{id}}" , jData[i].sUniqueId );
-				sUserTemplate = sUserTemplate.replace( "{{username}}" , jData[i].sUsername );
-				sUserTemplate = sUserTemplate.replace( "{{span1}}" ,  fnCheckAdmin(i) );
-				sUserTemplate = sUserTemplate.replace( "{{password}}" , jData[i].sPassword );
-				sUserTemplate = sUserTemplate.replace( "{{promote}}" ,  fnCheckPromote(i) );
+        console.log(jData);
+        for (var i = 0; i < jData.length; i++) {
+            console.log("div");
+            var sUserTemplate = sUser;
+            sUserTemplate = sUserTemplate.replace("{{id}}", jData[i].sUniqueId);
+            sUserTemplate = sUserTemplate.replace("{{username}}", jData[i].sUsername);
+            sUserTemplate = sUserTemplate.replace("{{span1}}", fnCheckAdmin(i));
+            sUserTemplate = sUserTemplate.replace("{{password}}", jData[i].sPassword);
+            sUserTemplate = sUserTemplate.replace("{{promote}}", fnCheckPromote(i));
 
-				$("#userBody").append( sUserTemplate );
-				iLastUserId++;
-			}
-
-
-		});
-	}
+            $("#userBody").append(sUserTemplate);
+            iLastUserId++;
+        }
 
 
-	/************************************************************************/
-	/************************************************************************/
-	/************************************************************************/
-function propertiesMapLoader(){
-	var sUrl = "api-get-all-properties.php?maxId="+iLastPropertyId;
-	$.getJSON( sUrl , function( jData ){
-		for( var i = 0 ; i < jData.length ; i++ ){
-
-			// Testing the value of I from the newly created api-get-all-properties;
-			//console.log("I checker - " + i );
-			var propLat = parseFloat(jData[i].lat);
-			var propLon = parseFloat(jData[i].lon);
-			initMap2(propLat, propLon, i+2);
-		}
-
-	});
+    });
 }
 
-	function fnGetProperties(){
+
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
+function propertiesMapLoader() {
+    var sUrl = "api-get-all-properties.php?maxId=" + iLastPropertyId;
+    $.getJSON(sUrl, function(jData) {
+        for (var i = 0; i < jData.length; i++) {
+
+            // Testing the value of I from the newly created api-get-all-properties;
+            //console.log("I checker - " + i );
+            var propLat = parseFloat(jData[i].lat);
+            var propLon = parseFloat(jData[i].lon);
+            initMap2(propLat, propLon, i + 2);
+        }
+
+    });
+}
+
+function fnGetProperties() {
 
 
 
 
-	//	console.log("gettingProperties");
-	// display properties
-	var sUrl = "api-get-properties.php?maxId="+iLastPropertyId;
-	$.getJSON( sUrl , function( jData ){
+    //	console.log("gettingProperties");
+    // display properties
+    var sUrl = "api-get-properties.php?maxId=" + iLastPropertyId;
+    $.getJSON(sUrl, function(jData) {
 
-		// Set a global variable equal to the initial amount of properties
-		// We do this in order to only get notiffications from the ones that have a key bigger than iPreloadedProperties
-		if( iPreloadedProperties == null){
-			iPreloadedProperties = jData.length;
+        // Set a global variable equal to the initial amount of properties
+        // We do this in order to only get notiffications from the ones that have a key bigger than iPreloadedProperties
+        if (iPreloadedProperties == null) {
+            iPreloadedProperties = jData.length;
 
-		}
+        }
 
-		var sProperty = '	<div class="lbl-property materialButton">\
+        var sProperty = '	<div class="lbl-property materialButton">\
 		<div class="lbl-property-id">{{id}}</div>\
 		<div class="lbl-property-address">{{address}}</div>\
 		<div class="lbl-property-price">{{price}}</div>\
 		<div class="lbl-property-images">{{image}}</div>\
 		<div class="lbl-property-map-container"><div id="map{{i}}"></div></div>\
-		'+fnPropertyLabelAdminCheck()+'\
+		' + fnPropertyLabelAdminCheck() + '\
 		</div>';
 
-		function fnPropertyLabelAdminCheck(){
-			if( iAccesRights > 1 ){
-				return '	<div data-go-to="wdw-create-property" class="fa fa-edit fa-fw link fa-icon-center"></div>\
+        function fnPropertyLabelAdminCheck() {
+            if (iAccesRights > 1) {
+                return '	<div data-go-to="wdw-create-property" class="fa fa-edit fa-fw link fa-icon-center"></div>\
 				<div class="fa fa-trash fa-fw btn-delete-property fa-icon-center"></div>';
-			}
-			else{
-				return "";
-			}
-		}
+            } else {
+                return "";
+            }
+        }
 
 
-		function fetchImages(count){
-		var imagesToDisplay = "";
-		console.log( "count images = " + count.saImages.length);
-		if( count.saImages.length == 0 ){
-		return "";
-		}
-		else{
-		for( var i = 0; i < count.saImages.length; i++ ){
+        function fetchImages(count) {
+            var imagesToDisplay = "";
+            console.log("count images = " + count.saImages.length);
+            if (count.saImages.length == 0) {
+                return "";
+            } else {
+                for (var i = 0; i < count.saImages.length; i++) {
 
-			imagesToDisplay += '<img class="propertyImages" src=images/'+count.saImages[i]+'>';
+                    imagesToDisplay += '<img class="propertyImages" src=images/' + count.saImages[i] + '>';
 
-			console.log(" image count = "+(i+1)+"size = " + count.saImages.length );
-		if ( i+1 == count.saImages.length ){
-		return(imagesToDisplay);
-		}
-		}
-		}
-
-
-		}
-		// Testing response from api
-		// console.log(jData);
-		for( var i = 0 ; i < jData.length ; i++ ){
-			var mapCounter = i+2;
-			var sPropertyTemplate = sProperty;
-			sPropertyTemplate = sPropertyTemplate.replace( "{{id}}" , jData[i].sUniqueId );
-			sPropertyTemplate = sPropertyTemplate.replace( "{{address}}" , jData[i].sAddress );
-			sPropertyTemplate = sPropertyTemplate.replace( "{{price}}" , jData[i].iPrice );
-			sPropertyTemplate = sPropertyTemplate.replace( "{{i}}" ,mapCounter );
-			//sPropertyTemplate = sPropertyTemplate.replace( "{{image}}" ,jData[i].saImages.length );
-			sPropertyTemplate = sPropertyTemplate.replace( "{{image}}" , fetchImages(jData[i]) );
-			$("#propertiesBody").append( sPropertyTemplate );
-
-			var mapValue = "#map"+mapCounter;
-
-			// Testing the map value. Enable it to see which map is affected.
-			// console.log(mapValue);
-						$(mapValue).css("height", "100%");
-
-						// Testing the I value. Enable to see the size of I.
-						//console.log("i = " + i );
-						var propLat = parseFloat(jData[i].lat);
-						var propLon = parseFloat(jData[i].lon);
-
-						// Testing the Latitude and Longitude after parsing.
-						//console.log(propLat, propLon);
-						initMap2(propLat, propLon, mapCounter);
+                    console.log(" image count = " + (i + 1) + "size = " + count.saImages.length);
+                    if (i + 1 == count.saImages.length) {
+                        return (imagesToDisplay);
+                    }
+                }
+            }
 
 
+        }
+        // Testing response from api
+        // console.log(jData);
+        for (var i = 0; i < jData.length; i++) {
+            var mapCounter = i + 2;
+            var sPropertyTemplate = sProperty;
+            sPropertyTemplate = sPropertyTemplate.replace("{{id}}", jData[i].sUniqueId);
+            sPropertyTemplate = sPropertyTemplate.replace("{{address}}", jData[i].sAddress);
+            sPropertyTemplate = sPropertyTemplate.replace("{{price}}", jData[i].iPrice);
+            sPropertyTemplate = sPropertyTemplate.replace("{{i}}", mapCounter);
+            //sPropertyTemplate = sPropertyTemplate.replace( "{{image}}" ,jData[i].saImages.length );
+            sPropertyTemplate = sPropertyTemplate.replace("{{image}}", fetchImages(jData[i]));
+            $("#propertiesBody").append(sPropertyTemplate);
 
+            var mapValue = "#map" + mapCounter;
 
+            // Testing the map value. Enable it to see which map is affected.
+            // console.log(mapValue);
+            $(mapValue).css("height", "100%");
 
+            // Testing the I value. Enable to see the size of I.
+            //console.log("i = " + i );
+            var propLat = parseFloat(jData[i].lat);
+            var propLon = parseFloat(jData[i].lon);
 
-
-			iLastPropertyId++;
-			if( iLastPropertyId > iPreloadedProperties) {
-				// We check if the position in the array is bigger than the initial amount of properties
-				spawnNotification("Asking price is "+jData[i].iPrice, jData[i].sPreviewImage, "A new propertry has been added on "+jData[i].sAddress);
-				document.getElementById('notification').play();
-				// IF we have a new property, the title will flash with it's name
-				fnFlashTitle(jData[i].sAddress);
-			}
+            // Testing the Latitude and Longitude after parsing.
+            //console.log(propLat, propLon);
+            initMap2(propLat, propLon, mapCounter);
+            iLastPropertyId++;
+            if (iLastPropertyId > iPreloadedProperties) {
+                // We check if the position in the array is bigger than the initial amount of properties
+                spawnNotification("Asking price is " + jData[i].iPrice, jData[i].sPreviewImage, "A new propertry has been added on " + jData[i].sAddress);
+                // document.getElementById('notification').play();
+                console.log("playing sound");
+                // IF we have a new property, the title will flash with it's name
+                fnFlashTitle(jData[i].sAddress);
+            }
 
 
 
 
-		}
+        }
 
 
-	});
+    });
 
 }
 
@@ -862,111 +805,124 @@ function propertiesMapLoader(){
 /************************************************************************/
 
 function changeMenuToX(x) {
-	x.classList.toggle("change");
+    x.classList.toggle("change");
 
 }
 
-$("#menu-bars").click( function(){
+$("#menu-bars").click(function() {
 
-	if (bMenuOpen == false) {
-		fnCheckLogin();
-		fnShowMenu();
-		bMenuOpen= true;
-	}
+    if (bMenuOpen == false) {
+        fnCheckLogin();
+        fnShowMenu();
+        bMenuOpen = true;
+    }
 
 
 });
 
-function fnShowMenu(){
-			//	 animate the menu
-			$("#menu").animate( { "left": "0px" } , 400 );
-			$("#menu").animate( { "left": "-10px" } , 200 );
-
-			// show the content cover
-			$("#content-cover").css( {"display":"flex"} );
-			$('.fadeMenuBar').fadeOut();
 
 
 
-		}
+function logOut() {
+    $.ajax({
+        "url": "api-destroy-session.php",
+    });
 
-		function fnMenuOpenToggle(){
-			bMenuOpen=false;
-		}
-		$("#content-cover").click(function(){
-			fnHideMenu();
-		});
+}
 
-		$(document).on('click', '.link', function(){
-			fnHideMenu();
-		});
+function fnShowMenu() {
+    //	 animate the menu
+    $("#menu").animate({
+        "left": "0px"
+    }, 400);
+    $("#menu").animate({
+        "left": "-10px"
+    }, 200);
 
-		function fnHideMenu(){
-			//	 animate the menu
-			$("#menu").animate( { "left": "-250px" } , 400 );
-			// show the content cover
-			$("#content-cover").hide();
-			$('#menu-bars').fadeIn(400);
-			window.setTimeout(fnMenuOpenToggle(), 400);
-			document.getElementById("menu-bars").classList.toggle("change")
-		}
-
+    // show the content cover
+    $("#content-cover").css({
+        "display": "flex"
+    });
+    $('.fadeMenuBar').fadeOut();
 
 
 
-		/************************************************************************/
-		/************************************************************************/
-		/************************************************************************/
+}
+
+function fnMenuOpenToggle() {
+    bMenuOpen = false;
+}
+$("#content-cover").click(function() {
+    fnHideMenu();
+});
+
+$(document).on('click', '.link', function() {
+    fnHideMenu();
+});
+
+function fnHideMenu() {
+    //	 animate the menu
+    $("#menu").animate({
+        "left": "-250px"
+    }, 400);
+    // show the content cover
+    $("#content-cover").hide();
+    $('#menu-bars').fadeIn(400);
+    window.setTimeout(fnMenuOpenToggle(), 400);
+    document.getElementById("menu-bars").classList.toggle("change")
+}
+
+
+
+
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
 
 
 // Create timer that updates properties
 // Only runs if the user is looking at the list
 // Stops when user clicks on something else
 
-$( document ).ready(function() {
-  fnCreatePropertyTimer();
+$(document).ready(function() {
+    fnCreatePropertyTimer();
 });
 
 
-function fnCreatePropertyTimer(){
-	fnGetProperties();
-	//console.log(iLastPropertyId);
-	window.timerProperties = setInterval(fnGetProperties, 1500);
+function fnCreatePropertyTimer() {
+    fnGetProperties();
+    //console.log(iLastPropertyId);
+    window.timerProperties = setInterval(fnGetProperties, 1500);
 }
 
-function fnCreateUserTimer(){
-	fnGetUsers();
-	window.timerUsers = setInterval(fnGetUsers, 1500);
+function fnCreateUserTimer() {
+    fnGetUsers();
+    window.timerUsers = setInterval(fnGetUsers, 1500);
 }
 
 
-function fnStartUserTimeout(){
+function fnStartUserTimeout() {
 
 
-	if (userView == "wdw-properties"){
-		propertiesMapLoader();
-		//console.log("called");
-		if(bTimerCheck == false ){
+    if (userView == "wdw-properties") {
+        propertiesMapLoader();
+        //console.log("called");
+        if (bTimerCheck == false) {
 
-			bTimerCheck = true;
-			clearInterval(window.timerUsers);
-		}
-		else {
-			bTimerCheck = false;
-		}
-	}
+            bTimerCheck = true;
+            clearInterval(window.timerUsers);
+        } else {
+            bTimerCheck = false;
+        }
+    } else if (userView == "wdw-users") {
+        fnCreateUserTimer();
 
-	else if( userView =="wdw-users"){
-		fnCreateUserTimer();
+    } else {
 
-	}
+        clearInterval(window.timerUsers);
+        bTimerCheck = false;
 
-	else {
-
-		clearInterval(window.timerUsers);
-		bTimerCheck = false;
-
-	}
+    }
 
 
 

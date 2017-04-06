@@ -84,7 +84,7 @@ $_SESSION['username']="";
 
 				<input id="txt-create-user-id" class="materialInput" placeholder="id" type="text" data-min="0" data-max="15" required="" style="display: none">
 
-				<input id="txt-create-user-username" class="materialInput" placeholder="username" type="text" data-min="3" data-max="15" required="">
+				<input id="txt-create-user-username" class="materialInput" placeholder="email" type="text" data-min="3" data-max="15" required="">
 
 				<input id="txt-create-user-password" class="materialInput" placeholder="password" type="password" required="" data-min="3" data-max="15" autocomplete="new-password">
 
@@ -114,7 +114,7 @@ $_SESSION['username']="";
 				<form id="frm-login" method="post" action="api-login.php" enctype="multipart/form-data">
 
 
-					<input id="txt-username" class="materialInput" name="username" placeholder="Username" type="text" required="">
+					<input id="txt-username" class="materialInput" name="username" placeholder="Email" type="text" required="">
 
 					<input id="txt-password" class="materialInput" name="password" placeholder="Password" type="text" required="">
 
@@ -141,14 +141,14 @@ $_SESSION['username']="";
 	<!-- ********************************************************************** -->
 	<div id="wdw-properties" class="wdw">
 		<div class="propertiesHeader"><h1 class="headerText">Property list</h1></div>
-		<div id="propertiesBody" class="propertiesRow">
+		<div id="propertiesBody" class="propertiesRow" style="overflow-y:scroll;">
 		</div>
 
 	</div>
 
 	<div id="wdw-users" class="wdw">
 		<div class="propertiesHeader"><h1 class="headerText">Users List</h1></div>
-		<div id="userBody" class="propertiesRow">
+		<div id="userBody" class="propertiesRow" style="overflow-y:scroll;">
 		</div>
 	</div>
 
@@ -157,7 +157,7 @@ $_SESSION['username']="";
 	<!-- ********************************************************************** -->
 	<!-- ********************************************************************** -->
 
-	<div id="wdw-create-property" class="wdw">
+	<div id="wdw-create-property" class="wdw" style="display:none">
 		<div class="propertiesHeader"><h1 class="headerText">Create Property</h1></div>
 
 		<div class="propertiesBody">

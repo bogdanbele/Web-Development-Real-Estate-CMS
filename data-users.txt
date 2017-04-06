@@ -15,7 +15,7 @@
         "sUniqueId": 100013,
         "sUsername": "444",
         "sPassword": "11",
-        "iAccesRights": 1
+        "iAccesRights": 2
     },
     {
         "sUniqueId": 100014,
@@ -45,6 +45,78 @@
         "sUniqueId": 100028,
         "sUsername": "41411",
         "sPassword": "133",
+        "iAccesRights": 2
+    },
+    {
+        "sUniqueId": 100029,
+        "sUsername": "31314",
+        "sPassword": "113",
         "iAccesRights": 1
+    },
+    {
+        "sUniqueId": 100030,
+        "sUsername": "55555",
+        "sPassword": "111",
+        "iAccesRights": 1
+    },
+    {
+        "sUniqueId": 100031,
+        "sUsername": "33334@yahoo.com",
+        "sPassword": "12213",
+        "iAccesRights": 2
+    },
+    {
+        "sUniqueId": 100032,
+        "sUsername": "33334@yahoo.com",
+        "sPassword": "12213",
+        "iAccesRights": 1
+    },
+    {
+        "sUniqueId": 100033,
+        "sUsername": "33334@yahoo.com",
+        "sPassword": "12213",
+        "iAccesRights": 2
+    },
+    {
+        "sUniqueId": 100034,
+        "sUsername": "12355@aa.ro",
+        "sPassword": "1111",
+        "iAccesRights": 1
+    },
+    {
+        "sUniqueId": 100035,
+        "sUsername": "12355@aa.ro",
+        "sPassword": "1111",
+        "iAccesRights": 1
+    },
+    {
+        "sUniqueId": 100036,
+        "sUsername": "12355@aa.ro",
+        "sPassword": "1111",
+        "iAccesRights": 1
+    },
+    {
+        "sUniqueId": 100037,
+        "sUsername": "test123@re.ro",
+        "sPassword": "aaaa",
+        "iAccesRights": 1
+    },
+    {
+        "sUniqueId": 100038,
+        "sUsername": "test123@re.ro",
+        "sPassword": "aaaa",
+        "iAccesRights": 1
+    },
+    {
+        "sUniqueId": 100039,
+        "sUsername": "test123@re.ro",
+        "sPassword": "aaaa",
+        "iAccesRights": 2
+    },
+    {
+        "sUniqueId": 100040,
+        "sUsername": "12321@aa.r",
+        "sPassword": "113",
+        "iAccesRights": 2
     }
 ]
